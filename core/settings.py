@@ -18,14 +18,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-secret-key')
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-dg2@slsa^tu^&+)bn_1&p936ew+j)1!=e%*m3dp)$cs3b+u!%b'
+# DJANGO_SECRET_KEY = 'django-insecure-dg2@slsa^tu^&+)bn_1&p936ew+j)1!=e%*m3dp)$cs3b+u!%b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['hitzz.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = ['hitzz.up.railway.app', '127.0.0.1','localhost']
 
 
 
@@ -122,7 +123,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static'] 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
