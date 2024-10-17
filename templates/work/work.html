@@ -1,0 +1,98 @@
+{% extends './navbar.html' %}
+{% load static %}
+
+{% block title %}Work{% endblock %}
+
+{% block content %}
+<style>
+
+    .category-list {
+        list-style-type: none; /* Removes default bullet points */
+        padding: 0;
+        margin-top: 40px;
+        display: flex; /* Flexbox layout to make the list horizontal */
+        gap: 20px; /* Adds space between categories */
+        justify-content: center; /* Centers the list */
+    }
+    h3 {
+        font-size: 2rem;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        text-align: right;
+        margin-right: 100px;
+    }
+    body{
+        font-family: 'Roboto', sans-serif;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: left;
+        margin-left: 100px;
+        margin-top: 50px;
+        font-family: "Roboto", sans-serif;
+    }
+    a {
+        text-decoration: none; /* Removes the underline from all links */
+    }
+
+    a:hover {
+        text-decoration: none; /* Ensures the underline doesn't appear on hover */
+    }
+
+    
+    .category-list li {
+        display: inline-block; /* Ensures each item takes up only necessary space */
+        padding: 10px 20px; /* Adds padding for visual appeal */
+        background-color: black; /* Example background color */
+        border-radius: 5px; /* Rounds the corners of each category item */
+        font-weight: bold;
+        font-size:1.5rem;
+        color:white;
+    }
+    
+    .category-list li:hover {
+        background-color: #ddd;
+        color:black; /* Optional: Add hover effect */
+    }
+    
+</style>
+
+<h1>Works</h1>
+<ul class="category-list">
+    
+    {% for category in categories %}
+    <a href="{% url 'work:project_list' category.id %}">
+        <li>{{ category.name }}</li>
+    </a>
+    {% empty %}
+        <li>No categories available.</li>
+    
+    {% endfor %}
+</ul>
+
+
+<div class="projects">
+    <h3>Take a look at some of our Projects</h3>
+
+    <div class="project-gallery">
+        {% for project in projects %}
+        <a href="{% url 'work:project_detail' project.id %}">
+            <div class="project-item">
+                <!-- Loop through images and display only the featured one -->
+                {% for image in project.images.all %}
+                    {% if image.is_feature %}
+                        
+                            <img src="{{ image.image.url }}" alt="{{ project.title }} Featured Image">
+                        
+                    {% endif %}
+                {% endfor %}
+                <div class="project-description">{{ project.title }}</div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

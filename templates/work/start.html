@@ -1,0 +1,140 @@
+{% extends './navbar.html' %}
+{% load static %}
+
+{% block title %}Start a Project{% endblock %}
+
+{% block content %}
+<div class="start-project-section">
+    <h1>Let's Start a New Project</h1>
+    <p>We're excited to learn about your project! Please provide us with the details, and we'll get back to you as soon as possible.</p>
+
+    <div class="form-container">
+        <div class="form-image">
+            <img src="{% static 'Hitz.png' %}" alt="Start Project Image">
+        </div>
+
+        <form action="{% url 'work:contactc' %}" method="post">
+            {% csrf_token %}
+            
+            <input type="text" id="name" name="name" placeholder="Name" required>
+
+            <input type="email" id="email" name="email" placeholder="Email address" required>
+
+            <input type="mobile" id="mobile" name="mobile" placeholder="Phone number" required>
+
+            <textarea id="description" name="description" placeholder="Tell us more about your project" required></textarea>
+
+            <button type="submit">Get Started</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    h1{
+        margin-left:250px;
+        margin-top:20px;
+    }
+    p{
+        margin-left:250px;
+        
+    }
+    body{
+        font-family: 'Roboto', sans-serif;
+    }
+    .start-project-section {
+        padding: 40px;
+        background-color: #f9f9f9;
+        text-align: center;
+    }
+
+    .start-project-section h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .start-project-section p {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+        color: #666;
+    }
+
+    .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 50px;
+        margin-top: 40px;
+        max-width: 1300px; /* Increase container width */
+        margin: 0 auto;
+    }
+
+    .form-image {
+        flex: 1; /* Allow the image to take up less space */
+    }
+
+    .form-image img {
+        max-width: 100%; /* Ensure the image is responsive */
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .form-image img:hover {
+        transform: scale(1.05);
+    }
+
+    form {
+        flex: 2; /* Make the form take up more space */
+        max-width: 900px; /* Increase the width of the form */
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-color: white;
+        padding: 50px; /* Increase padding */
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        color: #333;
+        transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+        border-color: #0097b2;
+        outline: none;
+    }
+
+    input::placeholder, textarea::placeholder {
+        color: #aaa;
+    }
+
+    button {
+        padding: 15px;
+        background-color: #0097b2;
+        color: white;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #007a99;
+        transform: translateY(-3px);
+    }
+
+    button:active {
+        background-color: #005f73;
+    }
+
+</style>
+{% endblock %}

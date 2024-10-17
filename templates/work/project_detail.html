@@ -1,0 +1,23 @@
+{% extends './navbar.html' %}
+{% load static %}
+
+{% block title %}{{ project.title }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ project.title }}</h1>
+
+
+<div class="project-images">
+    {% for image in images %}
+        {% if forloop.first %}
+            <!-- Feature the first image larger -->
+            <img src="{{ image.image.url }}" alt="Image for {{ project.title }}" style="width:1000px;">
+        {% else %}
+            <img src="{{ image.image.url }}" alt="Image for {{ project.title }}" style="width:300px;">
+        {% endif %}
+    {% endfor %}
+</div>
+<p>{{ project.description }}</p>
+
+{% endblock %}

@@ -1,0 +1,374 @@
+{% extends './navbar.html' %}
+{% load static %}
+
+{% block title %}Home - Hitzz{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    /* Styling for image and text container */
+    .image-text-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 40px auto;
+        max-width: 800px;
+    }
+
+    /* Styling for the image */
+    .bottom-image {
+        max-width: 500px;
+        margin-top: 400px;
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        margin-right: 100px;
+        margin-left: -100px;
+    }
+
+    .bottom-image:hover {
+        transform: scale(1.05);
+    }
+
+    /* Styling for the text content */
+    .text-content {
+        max-width: 450px;
+        font-size: 18px;
+        line-height: 1.6;
+        margin-top: 250px;
+    }
+
+    .about-i {
+        display: block;
+        margin: -300px auto;
+        max-width: 1000px;
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        position: relative;
+    }
+
+    .about-container {
+        display: block;
+        margin: -300px auto;
+        max-width: 1000px;
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        position: relative;
+    }
+
+    .about-text {
+        position: absolute;
+        background-color: white;
+        color: black;
+        font-size: 48px;
+        font-weight: bold;
+        padding: 5px 20px;
+        border-radius: 10px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        transform: translateY(-50%);
+        margin-left: 100px;
+        margin-top: -150px;
+    }
+
+    .scrolling-text {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        background-color: white;
+        overflow: hidden;
+        color: black;
+        text-align: center;
+        line-height: 150px;
+        margin: 20px;
+        font-size: 150px;
+        font-weight: bold;
+    }
+
+    .btn-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* Styling for the button */
+    .cta-btn {
+        position: absolute;
+        bottom: -100px;
+        left: 85%;
+        transform: translateX(-50%);
+        background-color: black;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        z-index: 10;
+    }
+
+    .cta-btn:hover {
+        background-color: transparent;
+    }
+
+    h8 {
+        font-size: 2em;
+    }
+
+    .scrolling-text span {
+        display: inline-block;
+        white-space: nowrap;
+        position: relative;
+        animation: scroll 10s linear infinite;
+    }
+
+    .left-text-container {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    .left-text-container h1 {
+        font-size: 24px;
+        margin: 10px 0;
+    }
+
+    .cta-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 24px;
+        background-color: white;
+        color: black;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .cta-button:hover {
+        background-color: #555;
+    }
+
+    /* Keyframes for scrolling text animation */
+    @keyframes scroll {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+        .image-text-container {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .bottom-image {
+            margin: 0;
+        }
+
+        .text-content {
+            margin-top: 20px;
+        }
+
+        .about-text {
+            font-size: 32px;
+            margin-left: 0;
+            text-align: center;
+        }
+
+        .scrolling-text {
+            font-size: 50px;
+            height: 100px;
+            line-height: 100px;
+        }
+
+        .cta-btn {
+            bottom: -50px;
+            left: 50%;
+        }
+
+        .services-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .left-text-container h1 {
+            font-size: 18px;
+        }
+
+        .cta-button {
+            padding: 10px 20px;
+        }
+        .namaste {
+            font-size: 36px;
+        }
+        
+        .text-overlay {
+            font-size: 28px;
+        }
+        
+        .text-a, .text-b {
+            font-size: 24px;
+        }
+    }
+    
+
+    @media (max-width: 480px) {
+        .about-text {
+            font-size: 24px;
+        }
+
+        .scrolling-text {
+            font-size: 30px;
+            line-height: 70px;
+        }
+
+        .cta-btn {
+            bottom: -30px;
+            font-size: 14px;
+        }
+
+        .cta-button {
+            font-size: 14px;
+        }
+        .namaste {
+            font-size: 14px;
+        }
+        
+        .text-overlay {
+            font-size: 20px;
+        }
+        
+        .text-a, .text-b {
+            font-size: 16px;
+        }
+        .left-text-container h1{
+            font-size:14px;
+        }
+        .content h1{
+            font-size:25px;
+        }
+        .content h2{
+            font-size:25px;
+        }
+        
+        /* Adjusting CTA button for mobile */
+        .cta-btn {
+            font-size: 14px;
+            padding: 8px 16px;
+            bottom: -30px;
+        }
+        .brandd {
+            flex-wrap: wrap; /* Ensure images wrap on very small screens */
+        }
+
+        .brandd img {
+            max-width: 50px; /* Further reduce image size for small screens */
+            margin: 5px; /* Tighten spacing */
+        }
+    }
+</style>
+
+
+<div class="image">
+    <img src="{% static 'black.jpg' %}" class="soft" id="slideshow">
+    <div class="namaste">Namaste, We're Hitzz</div>
+    <div class="text-overlay">A Web Design And</div>
+    <div class="text-a">Branding Agency</div>
+    <div class="text-b">In Nepal</div>
+    <a href="#" class="cta-btn">View Our Work</a>
+</div>
+
+<div class="content">
+    <div class="left-text-container">
+        <h1>Who are we?</h1>
+    </div>
+    <h1>An independent web design</h1>
+    <h1>and branding agency in Nepal</h1>
+    <h1>set up in 2024 who care, build</h1>
+    <h2>relationships and your business</h2>
+    <div class="bb">
+        <a href="#">About</a>
+        <a href="#">Start a Project</a>
+    </div>
+</div>
+
+<div class="brandd">
+    <img src="{% static 'jjbb-removebg.png' %}" alt="Image 1">
+    <img src="{% static 'Bishankhu (1).png' %}" alt="Image 2">
+    <img src="{% static 'jjbb-removebg.png' %}" alt="Image 3">
+    <img src="{% static 'Bishankhu (1).png' %}" alt="Image 4">
+</div>
+
+<div class="projects">
+    <h7 style="font-weight: bold;">Projects completed</h7>
+    <h2>Take a look at some of our Projects</h2>
+    <div class="project-gallery">
+        <div class="project-item">
+            <img src="static/k.png" alt="Project 1">
+            <div class="project-description">Patan BookStore</div>
+        </div>
+        <div class="project-item reverse-layout">
+            <img src="static/black.jpg" alt="Project 2">
+            <div class="project-description">JetBlue Clothing</div>
+        </div>
+    </div>
+</div>
+
+<div class="services">
+    <div class="s">
+        <h1>Our Services<h1>
+    </div>
+    <div class="ss">
+        <p>We are a web design agency, and we’re on a mission to help you take the next step in your business.</p>
+        <a href="#" class="cta-button">Explore Our Services</a>
+    </div>
+
+    <h4>Take your business to the next level?</h4>
+
+    <div class="services-content">
+        <div class="service-item" data-image="static/black.jpg">
+            <h3>Branding</h3>
+        </div>
+        <div class="service-item" data-image="static/seo-thumbnail.jpg">
+            <h3>SEO</h3>
+        </div>
+        <div class="service-item" data-image="static/website-thumbnail.jpg">
+            <h3>Website</h3>
+        </div>
+        <div class="service-item" data-image="static/website-thumbnail.jpg">
+            <h3>Design</h3>
+        </div>
+        <div class="service-item" data-image="static/website-thumbnail.jpg">
+            <h3>Development</h3>
+        </div>
+    </div>
+</div>
+
+<div class="about-container">
+    <img src="{% static 'black.jpg' %}" alt="About Us Image" class="about-i">
+    <div class="about-text">Visit The Website</div>
+</div>
+
+<!-- Container with Image and Text next to each other -->
+<div class="image-text-container">
+    <img src="{% static 'Hitz.png' %}" alt="Hitzz Logo" class="bottom-image">
+    <div class="text-content">
+        <h2>About Hitzz</h2>
+        <p>Hitzz is a web design and branding agency based in Nepal, offering top-notch digital services. We help businesses grow by providing creative solutions that elevate their brand and online presence.</p>
+    </div>
+</div>
+
+<div class="scrolling-text">
+    <span>Let's Work Together.</span>
+</div>
+{% endblock %}

@@ -1,0 +1,265 @@
+{% extends './navbar.html' %}
+{% load static %}
+
+{% block title %}Our Services{% endblock %}
+
+{% block content %}
+<style>
+    h3 {
+        font-size: 5rem;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: center;
+        opacity: 0;
+        animation: fadeInSlideDown 1s ease-out forwards 0.3s;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: left;
+        margin-left: 100px;
+        margin-top: 50px;
+        opacity: 0;
+        animation: fadeInSlideRight 1s ease-out forwards 0.5s;
+    }
+
+    h4 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-left: 50px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        opacity: 0;
+        animation: fadeInSlideLeft 1s ease-out forwards 0.8s;
+    }
+
+    .about-image {
+        display: block;
+        margin: 40px auto;
+        max-width: 600px;
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        opacity: 0;
+        animation: fadeIn 1.5s ease-out forwards 1s;
+    }
+
+    .about-i {
+        display: block;
+        margin: 40px auto;
+        max-width: 1000px;
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        opacity: 0;
+        animation: fadeIn 1.5s ease-out forwards 1s;
+    }
+
+    .content-wrapper {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin: 40px 100px;
+        gap: 20px;
+    }
+
+    .text-group {
+        max-width: 50%;
+    }
+
+    .paragraph {
+        max-width: 40%;
+        font-size: 1.5rem;
+        line-height: 1.8;
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards 1.2s;
+    }
+
+    /* Projects Completed Section */
+    .projects-completed-section {
+        background-color: black;  /* Black background for the column */
+        padding: 40px 0;
+    }
+
+    .projects-completed {
+        text-align: center;
+        margin: 0; /* Remove margin */
+        opacity: 0;
+        animation: fadeInSlideUp 1s ease-out forwards 1.5s;
+    }
+
+    .projects-completed h3 {
+        color: white;  /* White text for the title */
+    }
+
+    .counter {
+        font-size: 4rem;
+        font-weight: bold;
+        color: white;  /* White text for the counter */
+        display: inline-block;
+        opacity: 0;
+        animation: bounceIn 2s forwards ease-in-out;
+        transition: transform 0.2s, color 1s;
+    }
+
+    @keyframes bounceIn {
+        0% {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes colorChange {
+        0% {
+            color: #0097b2;
+        }
+        50% {
+            color: #33aaff;
+        }
+        100% {
+            color: #0097b2;
+        }
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeInSlideDown {
+        0% {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInSlideRight {
+        0% {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInSlideLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInSlideUp {
+        0% {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 768px) {
+        .content-wrapper {
+            flex-direction: column;
+            margin: 20px;
+        }
+
+        .text-group,
+        .paragraph {
+            max-width: 100%;
+        }
+    }
+    body{
+        font-family: 'Roboto', sans-serif;
+    }
+</style>
+
+<h1>About Us</h1>
+<h3>Good Design</h3>
+<h3>Good Life</h3>
+
+<img src="{% static 'Hitz.png' %}" alt="About Us Image" class="about-image">
+
+<div class="content-wrapper">
+    <div class="text-group">
+        <h4>Expert web designers and</h4>
+        <h4>web developers in the digital</h4>
+        <h4> industry who offer professional</h4>
+        <h4> and trustworthy service.</h4>
+    </div>
+    <div class="paragraph">
+        <p>As a guy who is passionate about art's and craft's i try to bring by artestic nature to my website design and development.A engineering droupout who like to arts and drawing since kid is now creating aesthetic websites for your buisness nad successs </p>
+    </div>
+</div>
+
+<img src="{% static 'black.jpg' %}" alt="About Us Image" class="about-i">
+
+<!-- Black horizontal column for "Projects Completed" -->
+<div class="projects-completed-section">
+    <div class="projects-completed">
+        <h3>Projects Completed</h3>
+        <span class="counter" id="project-counter">0</span>
+    </div>
+</div>
+<div class="brandd">
+    <img src="{% static 'jjbb-removebg.png' %}" alt="Image 1">
+    <img src="{% static 'Bishankhu (1).png' %}" alt="Image 2">
+    <img src="{% static 'jjbb-removebg.png' %}" alt="Image 3">
+    <img src="{% static 'Bishankhu (1).png' %}" alt="Image 4">
+</div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const counter = document.getElementById('project-counter');
+        let count = 0;
+        const target = 3;  // Target number for the counter
+
+        const updateCounter = () => {
+            const speed = 200;  // Lower number for faster counting
+            const increment = target / speed;
+
+            if (count < target) {
+                count += increment;
+                counter.innerText = Math.ceil(count);
+                counter.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    counter.style.transform = 'scale(1)';
+                }, 150);
+                setTimeout(updateCounter, 30);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        updateCounter();
+    });
+</script>
+
+{% endblock %}

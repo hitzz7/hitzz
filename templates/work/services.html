@@ -1,0 +1,128 @@
+{% extends './navbar.html' %}
+{% load static %}
+
+{% block title %}Our Services{% endblock %}
+
+{% block content %}
+<style>
+    h3 {
+        font-size: 2rem;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: right;
+        margin-right: 100px;
+    }
+    body{
+        font-family: 'Roboto', sans-serif;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: left;
+        margin-left: 100px;
+        margin-top: 50px;
+    }
+
+    /* Horizontal line section */
+    .horizontal-line {
+        display: flex;
+        flex-direction: column; /* Stacks the lines vertically */
+        align-items: center; /* Center everything */
+        margin: 50px 0;
+    }
+
+    .line {
+        width: 80%; /* Adjust the width to fit within the layout */
+        border-top: 2px solid white; /* Top line color */
+        margin: 10px 0; /* Space above and below the line */
+    }
+
+    .word-container {
+        background-color: black; /* Background color for the word section */
+        padding: 20px 0; /* Padding for spacing */
+        text-align: center; /* Center the text */
+        width: 100%;
+    }
+
+    .word-between {
+        font-size: 7rem; /* Adjust size as needed */
+        font-weight: bold;
+        color: white; /* Text color */
+        white-space: nowrap; /* Prevents the word from wrapping */
+        opacity: 0; /* Start hidden */
+        transition: opacity 0.5s ease; /* Smooth transition for opacity */
+    }
+
+    .show {
+        opacity: 1; /* Show the word */
+    }
+
+    /* Simple list for services without numbering or underline */
+    .services-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .services-container div {
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px 0;
+        width: 60%; /* Fixed length for each service */
+        border-bottom: 3px solid lightgrey; /* Start with transparent border */
+        transition: color 0.3s ease, border-color 0.3s ease; /* Transition for text color and border */
+         /* Border radius */
+        margin-bottom: 10px; /* Space between service items */
+    }
+
+    
+    .services-container div:hover {
+        border-bottom: 3px solid black; /* Light underline on hover */
+    }
+
+    
+</style>
+
+<h1>Services</h1>
+<h3>We develop and design websites for brands</h3>
+<h3>We bring our passion for good design to brave brands</h3>
+
+<div class="horizontal-line">
+    <div class="line"></div>
+    <div class="word-container">
+        <span id="animated-word" class="word-between">CREATIVE</span>
+    </div>
+    <div class="line"></div>
+</div>
+
+<!-- Services section without numbering and underlines -->
+<div class="services-container">
+    <div>Website Design</div>
+    <div>Branding & Identity</div>
+    <div>Search Engine Optimization (SEO)</div>
+    <div>Graphic Design</div>
+    <div>Web Development</div>
+</div>
+
+<script>
+    const words = ["CREATIVE", "INNOVATIVE", "PROFESSIONAL", "DYNAMIC", "EFFICIENT"];
+    const animatedWordElement = document.getElementById("animated-word");
+    let index = 0;
+
+    function changeWord() {
+        animatedWordElement.classList.remove("show");
+        setTimeout(() => {
+            index = (index + 1) % words.length;
+            animatedWordElement.textContent = words[index];
+            animatedWordElement.classList.add("show");
+        }, 500);
+    }
+
+    setInterval(changeWord, 2000);
+    changeWord();
+</script>
+
+{% endblock %}

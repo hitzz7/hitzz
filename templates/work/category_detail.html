@@ -1,0 +1,31 @@
+{% extends './navbar.html' %}
+{% load static %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ category.name }}</h1>
+<p>{{ category.description }}</p>
+
+<h2>Projects under {{ category.name }}</h2>
+
+<div class="project-gallery">
+    {% for project in projects %}
+        <div class="project-item">
+            {% for image in project.images.all %}
+                {% if image.is_feature %}
+                    <!-- Link to the project detail page -->
+                    <a href="{% url 'work:project_detail' project.id %}">
+                        <img src="{{ image.image.url }}" alt="{{ project.title }} Featured Image">
+                    </a>
+                {% endif %}
+            {% endfor %}
+            <div class="project-description">{{ project.title }}</div>
+        </div>
+    {% empty %}
+        <p>No projects available under this category.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
