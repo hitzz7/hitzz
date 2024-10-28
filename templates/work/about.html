@@ -102,6 +102,36 @@
         animation: bounceIn 2s forwards ease-in-out;
         transition: transform 0.2s, color 1s;
     }
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 1.8rem;
+        }
+    
+        h3 {
+            font-size: 2rem;
+        }
+    
+        h4 {
+            font-size: 1.2rem;
+            align-text:center;
+        }
+    
+        .paragraph p {
+            font-size: 1.2rem;
+        }
+    
+        .counter {
+            font-size: 2.5rem;
+        }
+        .brandd {
+            flex-wrap: wrap; /* Ensure images wrap on very small screens */
+        }
+
+        .brandd img {
+            max-width: 70px; /* Further reduce image size for small screens */
+            margin: 5px; /* Tighten spacing */
+        }
+    }
 
     @keyframes bounceIn {
         0% {

@@ -14,12 +14,16 @@ from .forms import ContactForm
 #     return render(request,'work/category_list.html',{'categories':categories})
 
 def demo_view(request):
-    return render(request, 'work/home.html')
+    projects=Project.objects.all()
+    return render(request, 'work/home.html',{'projects':projects})
 
 def work(request):
     categories = Category.objects.all()
     projects = Project.objects.all()
     return render(request, 'work/work.html', {'categories': categories,'projects': projects},)
+
+
+
 
 def project_list(request, category_id):
     category = get_object_or_404(Category, pk=category_id)

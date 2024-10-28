@@ -18,59 +18,45 @@
         text-align: left;
         margin-left: 100px;
         margin-top: 50px;
-        
     }
-     .contact-section h2 {
+    
+    .contact-section h2 {
         font-size: 3rem;
         margin-top: 5px;
         margin-bottom: 5px;
         text-align: right;
-        margin-right: 150px; /* Move h2 to the right */
+        margin-right: 150px;
     }
+
     .heading-container {
         display: flex;
         justify-content: flex-end;
         align-items: center;
         gap: 100px;
         margin-top: 20px;
-        margin-bottom:40px;
+        margin-bottom: 40px;
         margin-right: -100px;
-        
     }
 
-    
-    .bb  {
+    .bb {
         display: inline-block;
         padding: 12px 24px;
         margin-right: 30px;
         background-color: black;
-        /* Main background color */
         color: white;
-        /* Text color */
         text-decoration: none;
         border-radius: 50px;
-        /* Makes the button oval */
         font-size: 1em;
         font-weight: bold;
         text-align: center;
         border: 3px solid black;
-        /* Center text horizontally */
         transition: background-color 0.3s, transform 0.3s;
     }
 
     .bb:hover {
         background-color: white;
         color: black;
-        /* Darker shade on hover */
         transform: scale(1.05);
-        /* Slight zoom effect */
-    }
-
-    .bb:focus,
-    .bb:active {
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(0, 151, 178, 0.5);
-        /* Outline effect for accessibility */
     }
 
     .contact-details {
@@ -96,8 +82,9 @@
         transform: scale(1.05);
         background-color: black;
         border-radius: 10px;
-        color: white; /* Change text color to white on hover */
+        color: white;
     }
+
     .contact-icon {
         font-size: 2rem;
         color: #0097b2;
@@ -108,22 +95,41 @@
         color: #33aaff;
     }
 
-    /* Social Media Icons */
-    .social-media {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin-top: 40px;
-    }
+    @media (max-width: 768px) {
+        .contact-section {
+            padding: 20px;
+        }
 
-    .social-icon {
-        font-size: 2.5rem;
-        color: #0097b2;
-        transition: color 0.3s ease;
-    }
+        .contact-section h1 {
+            font-size: 2rem;
+            margin-left: 20px;
+        }
 
-    .social-icon:hover {
-        color: #33aaff;
+        .contact-section h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-right: 0;
+        }
+
+        .heading-container {
+            flex-direction: column;
+            justify-content: center;
+            margin-right: 0;
+            gap: 20px;
+        }
+
+        .bb {
+            font-size: 0.9em;
+            padding: 10px 20px;
+        }
+
+        .contact-details {
+            font-size: 1.2rem;
+        }
+
+        .contact-item {
+            font-size: 1.2rem;
+        }
     }
 
     @keyframes fadeInSlideDown {
@@ -135,15 +141,16 @@
             opacity: 1;
             transform: translateY(0);
         }
-        h2{
-            font-size: 5rem;
+    }
+
+    h2 {
+        font-size: 5rem;
         margin-top: 5px;
         margin-bottom: 5px;
-        text-align:right;
-        
-        }
+        text-align: right;
     }
-    body{
+
+    body {
         font-family: 'Roboto', sans-serif;
     }
 </style>
@@ -152,51 +159,23 @@
     <h1>Contact Us</h1>
     <div class="heading-container">
         <a href="{% url 'work:start' %}" class="bb">Message Us</a>
-        <h2>Its nice to meet ya</h2>
-        
+        <h2>It's nice to meet ya</h2>
     </div>
-    
+
     <div class="contact-details">
-        <!-- Phone Number -->
         <a href="tel:+1234567890" class="contact-item">
-            <h3>Phone Number</h3><!-- Phone Icon -->
+            <h3>Phone Number</h3>
             <span>9818326491</span>
         </a>
-
-        <!-- Email -->
         <a href="mailto:info@example.com" class="contact-item">
-            <h3>Email</h3> <!-- Email Icon -->
+            <h3>Email</h3>
             <span>najus777@gmail.com</span>
         </a>
-
-        <!-- Address (Optional) -->
         <a href="https://goo.gl/maps/example" target="_blank" class="contact-item">
-            <h3>Location</h3> <!-- Location Icon -->
-            <span>Godawari,Lalitpur</span>
-        </a>
-    </div>
-
-    <!-- Social Media Section -->
-    <div class="social-media">
-        <!-- Facebook -->
-        <a href="https://facebook.com/example" target="_blank" class="social-icon">
-            <i class="fab fa-facebook"></i> <!-- Facebook Icon -->
-        </a>
-        <!-- Twitter -->
-        <a href="https://twitter.com/example" target="_blank" class="social-icon">
-            <i class="fab fa-twitter"></i> <!-- Twitter Icon -->
-        </a>
-        <!-- Instagram -->
-        <a href="https://instagram.com/example" target="_blank" class="social-icon">
-            <i class="fab fa-instagram"></i> <!-- Instagram Icon -->
-        </a>
-        <!-- LinkedIn -->
-        <a href="https://linkedin.com/company/example" target="_blank" class="social-icon">
-            <i class="fab fa-linkedin"></i> <!-- LinkedIn Icon -->
+            <h3>Location</h3>
+            <span>Godawari, Lalitpur</span>
         </a>
     </div>
 </div>
 
-<!-- FontAwesome Icons -->
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 {% endblock %}

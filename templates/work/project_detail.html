@@ -4,20 +4,87 @@
 {% block title %}{{ project.title }}{% endblock %}
 
 {% block content %}
+<style>
+    /* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+}
 
-<h1>{{ project.title }}</h1>
+.project-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
+.project-title {
+    font-size: 2.5em;
+    text-align: center;
+    color: #0097b2;
+    margin-bottom: 20px;
+}
 
-<div class="project-images">
-    {% for image in images %}
-        {% if forloop.first %}
-            <!-- Feature the first image larger -->
-            <img src="{{ image.image.url }}" alt="Image for {{ project.title }}" style="width:1000px;">
-        {% else %}
-            <img src="{{ image.image.url }}" alt="Image for {{ project.title }}" style="width:300px;">
-        {% endif %}
-    {% endfor %}
+.project-description {
+    font-size: 1.2em;
+    line-height: 1.6;
+    text-align: justify;
+    margin-top: 20px;
+}
+
+/* Image Styling */
+.project-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.featured-image {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail-image {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.featured-image:hover,
+.thumbnail-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Additional Hover Effect */
+.thumbnail-image {
+    opacity: 0.9;
+}
+
+.thumbnail-image:hover {
+    opacity: 1;
+}
+
+</style>
+<div class="project-container">
+    <h1 class="project-title">{{ project.title }}</h1>
+
+    <div class="project-images">
+        {% for image in images %}
+            {% if forloop.first %}
+                <!-- Feature the first image larger -->
+                <img src="{{ image.image.url }}" alt="Image for {{ project.title }}" class="featured-image">
+            {% else %}
+                <img src="{{ image.image.url }}" alt="Image for {{ project.title }}" class="thumbnail-image">
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+    <p class="project-description">{{ project.description }}</p>
 </div>
-<p>{{ project.description }}</p>
-
 {% endblock %}

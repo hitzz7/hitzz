@@ -1,6 +1,7 @@
 {% extends './navbar.html' %}
 {% load static %}
 
+
 {% block title %}Home - Hitzz{% endblock %}
 
 {% block content %}
@@ -32,6 +33,9 @@
     .bottom-image:hover {
         transform: scale(1.05);
     }
+    .about-i:hover{
+        transform:scale(1.05);
+    }
 
     /* Styling for the text content */
     .text-content {
@@ -39,6 +43,9 @@
         font-size: 18px;
         line-height: 1.6;
         margin-top: 250px;
+    }
+    a {
+        text-decoration: none; /* Removes the underline from all links */
     }
 
     .about-i {
@@ -152,6 +159,10 @@
     .cta-button:hover {
         background-color: #555;
     }
+    .text-content:hover h2{
+        transform: scale(1.05);
+
+    }
 
     /* Keyframes for scrolling text animation */
     @keyframes scroll {
@@ -178,6 +189,7 @@
         .text-content {
             margin-top: 20px;
         }
+        
 
         .about-text {
             font-size: 32px;
@@ -219,12 +231,52 @@
         .text-a, .text-b {
             font-size: 24px;
         }
+        .soft {
+            max-width: 100%; /* Allow the image to take full width */
+            height: auto; /* Maintain aspect ratio */
+        }
     }
     
 
     @media (max-width: 480px) {
         .about-text {
             font-size: 24px;
+        }
+        .image-text-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        .about-text {
+            position: absolute;
+            background-color: white;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+            
+            border-radius: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            transform: translateY(-50%);
+            margin-left: 50px;
+            margin-top: 200px;
+        }
+        .image{
+            display:flex;
+            margin-top:50px;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        .soft {
+            height: 500px; /* Set a specific height for mobile */
+            object-fit: cover; /* Ensure the image covers the height while maintaining aspect ratio */
+            transform: scale(1.1);
+            max-width:95%;
+            margin: 0 auto;
+            
+            
         }
 
         .scrolling-text {
@@ -235,6 +287,7 @@
         .cta-btn {
             bottom: -30px;
             font-size: 14px;
+            left:69%;
         }
 
         .cta-button {
@@ -242,45 +295,102 @@
         }
         .namaste {
             font-size: 14px;
+            top:14%;
+            left:33%;
         }
         
         .text-overlay {
-            font-size: 20px;
+            font-size: 25px;
+            top:17%;
+            left:32%;
         }
         
-        .text-a, .text-b {
-            font-size: 16px;
+        .text-a {
+            font-size: 25px;
+            top:20.5%;
+            left:30%;
+
         }
-        .left-text-container h1{
-            font-size:14px;
+        .text-b {
+            font-size: 25px;
+            top:24.5%;
+            left:18.5%;
+
+        }
+        .left-text-container h3{
+            font-size:15px;
+            
+        }
+        .content{
+            text-align:center;
+            margin:50px auto 0;
+            
+
         }
         .content h1{
             font-size:25px;
+            
+            
         }
         .content h2{
             font-size:25px;
+        }
+        .services h4 {
+            font-size: 25px;
+            
+        }
+        .service-item h3 {
+            font-size: 50px;
+            margin: 0;
         }
         
         /* Adjusting CTA button for mobile */
         .cta-btn {
             font-size: 14px;
             padding: 8px 16px;
-            bottom: -30px;
+            bottom: 290px;
+        }
+        .bb{
+            justify-content: center;
+            margin-top:20px;
+            
         }
         .brandd {
             flex-wrap: wrap; /* Ensure images wrap on very small screens */
         }
 
         .brandd img {
-            max-width: 50px; /* Further reduce image size for small screens */
+            max-width: 70px; /* Further reduce image size for small screens */
             margin: 5px; /* Tighten spacing */
+        }
+        .projects h2{
+            font-size:25px;
+        }
+        .project-description{
+            font-size:20px;
+        }
+        .about-container {
+            display: block;
+            margin: 185px auto 400px;
+            max-width: 1000px;
+            width: 90%;
+            height: auto;
+            border-radius: 15px;
+            position: relative;
+        }
+        text-content h2 {
+            font-size:25px;
         }
     }
 </style>
 
 
 <div class="image">
-    <img src="{% static 'black.jpg' %}" class="soft" id="slideshow">
+    <video class="soft"autoplay loop muted>
+        <source src="{% static 'ck.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
     <div class="namaste">Namaste, We're Hitzz</div>
     <div class="text-overlay">A Web Design And</div>
     <div class="text-a">Branding Agency</div>
@@ -290,7 +400,7 @@
 
 <div class="content">
     <div class="left-text-container">
-        <h1>Who are we?</h1>
+        <h3>Who are we?</h3>
     </div>
     <h1>An independent web design</h1>
     <h1>and branding agency in Nepal</h1>
@@ -313,14 +423,21 @@
     <h7 style="font-weight: bold;">Projects completed</h7>
     <h2>Take a look at some of our Projects</h2>
     <div class="project-gallery">
-        <div class="project-item">
-            <img src="static/k.png" alt="Project 1">
-            <div class="project-description">Patan BookStore</div>
-        </div>
-        <div class="project-item reverse-layout">
-            <img src="static/black.jpg" alt="Project 2">
-            <div class="project-description">JetBlue Clothing</div>
-        </div>
+        {% for project in projects %}
+        <a href="{% url 'work:project_detail' project.id %}">
+            <div class="project-item">
+                <!-- Loop through images and display only the featured one -->
+                {% for image in project.images.all %}
+                    {% if image.is_feature %}
+                        
+                            <img src="{{ image.image.url }}" alt="{{ project.title }} Featured Image">
+                        
+                    {% endif %}
+                {% endfor %}
+                <div class="project-description">{{ project.title }}</div>
+            </div>
+        </a>
+        {% endfor %}
     </div>
 </div>
 
@@ -355,7 +472,7 @@
 </div>
 
 <div class="about-container">
-    <img src="{% static 'black.jpg' %}" alt="About Us Image" class="about-i">
+    <img src="{% static 'v.png' %}" alt="About Us Image" class="about-i">
     <div class="about-text">Visit The Website</div>
 </div>
 
@@ -371,4 +488,5 @@
 <div class="scrolling-text">
     <span>Let's Work Together.</span>
 </div>
+
 {% endblock %}
