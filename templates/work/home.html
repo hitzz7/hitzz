@@ -8,6 +8,7 @@
 <style>
     body {
         font-family: 'Roboto', sans-serif;
+        
     }
 
     /* Styling for image and text container */
@@ -79,7 +80,7 @@
         text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         transform: translateY(-50%);
         margin-left: 100px;
-        margin-top: -150px;
+        margin-top: -50px;
     }
 
     .scrolling-text {
@@ -307,13 +308,159 @@
         
         .text-a {
             font-size: 25px;
-            top:20.5%;
+            top:21%;
             left:30%;
 
         }
         .text-b {
             font-size: 25px;
             top:24.5%;
+            left:18.5%;
+
+        }
+        .left-text-container h3{
+            font-size:15px;
+            
+        }
+        .content{
+            text-align:center;
+            margin:50px auto 0;
+            
+
+        }
+        .content h1{
+            font-size:25px;
+            
+            
+        }
+        .content h2{
+            font-size:25px;
+        }
+        .services h4 {
+            font-size: 25px;
+            
+        }
+        .service-item h3 {
+            font-size: 50px;
+            margin: 0;
+        }
+        
+        /* Adjusting CTA button for mobile */
+        .cta-btn {
+            font-size: 14px;
+            padding: 8px 16px;
+            bottom: 290px;
+        }
+        .bb{
+            justify-content: center;
+            margin-top:20px;
+            
+        }
+        .brandd {
+            flex-wrap: wrap; /* Ensure images wrap on very small screens */
+        }
+
+        .brandd img {
+            max-width: 70px; /* Further reduce image size for small screens */
+            margin: 5px; /* Tighten spacing */
+        }
+        .projects h2{
+            font-size:25px;
+        }
+        .project-description{
+            font-size:20px;
+        }
+        .about-container {
+            display: block;
+            margin: 185px auto 400px;
+            max-width: 1000px;
+            width: 90%;
+            height: auto;
+            border-radius: 15px;
+            position: relative;
+        }
+        text-content h2 {
+            font-size:25px;
+        }
+    }
+    
+
+    @media (max-width: 480px) {
+        .about-text {
+            font-size: 24px;
+        }
+        .image-text-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        .about-text {
+            position: absolute;
+            background-color: white;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+            
+            border-radius: 10px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            transform: translateY(-50%);
+            margin-left: 50px;
+            margin-top: 200px;
+        }
+        .image{
+            display:flex;
+            margin-top:50px;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        .soft {
+            height: 500px; /* Set a specific height for mobile */
+            object-fit: cover; /* Ensure the image covers the height while maintaining aspect ratio */
+            transform: scale(1.1);
+            max-width:95%;
+            margin: 0 auto;
+            
+            
+        }
+
+        .scrolling-text {
+            font-size: 30px;
+            line-height: 70px;
+        }
+
+        .cta-btn {
+            bottom: -30px;
+            font-size: 4vw;
+            left:69%;
+        }
+
+        .cta-button {
+            font-size: 14px;
+        }
+        .namaste {
+            font-size: 3.5vw;
+            top:14%;
+            left:33%;
+        }
+        
+        .text-overlay {
+            font-size: 6vw;
+            top:17%;
+            left:32.3%;
+        }
+        
+        .text-a {
+            font-size: 6vw;
+            top:20.8%;
+            left:30%;
+
+        }
+        .text-b {
+            font-size: 6vw;
+            top:24.7%;
             left:18.5%;
 
         }
@@ -415,8 +562,7 @@
 <div class="brandd">
     <img src="{% static 'jjbb-removebg.png' %}" alt="Image 1">
     <img src="{% static 'Bishankhu (1).png' %}" alt="Image 2">
-    <img src="{% static 'jjbb-removebg.png' %}" alt="Image 3">
-    <img src="{% static 'Bishankhu (1).png' %}" alt="Image 4">
+    
 </div>
 
 <div class="projects">
