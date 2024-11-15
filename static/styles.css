@@ -346,7 +346,7 @@
 
         .namaste {
             position: absolute;
-            top: 22%;
+            top: 21%;
             left: 27.3%;
             transform: translate(-50%, -50%);
             background-color: white;
@@ -360,6 +360,7 @@
            
             width: 48%
         }
+        
 
         .text-a::before {
             content: '';
