@@ -193,6 +193,20 @@
                 align-items: center;
             }
         }
+        @media (max-width: 768px) {
+            header.shrink {
+                margin-left: -20px;
+            }
+        
+            header .brand a {
+                font-size: 20px; /* Adjust logo size */
+            }
+        
+            .navbar li a {
+                font-size: 16px; /* Adjust font size */
+            }
+        }
+    
 </style>
 </head>
 
@@ -206,7 +220,9 @@
                 <li><a href="{% url 'work:work' %}">Work</a></li>
                 <li><a href="{% url 'work:services' %}">Services</a></li>
                 <li><a href="{% url 'work:about' %}">About</a></li>
-                <li><a href="{% url 'work:contact' %}">Contact</a></li>
+                <li><a href="{% url 'work:contact' %}">Contact</a> </li>
+                
+                
             </ul>
         </nav>
         <div class="button">
@@ -247,11 +263,28 @@
 </body>
 <script>
     const hamburger = document.getElementById('hamburger');
-        const navbar = document.getElementById('navbar');
+    const navbar = document.getElementById('navbar');
+    const body = document.body;
 
-        hamburger.addEventListener('click', function () {
-            navbar.classList.toggle('show');
-        });
+    hamburger.addEventListener('click', function () {
+        navbar.classList.toggle('show');
+
+        // Toggle scrolling
+        if (navbar.classList.contains('show')) {
+            body.style.overflow = 'hidden'; // Disable scrolling
+        } else {
+            body.style.overflow = ''; // Re-enable scrolling
+        }
+    });
+
+    // Close navbar when clicking outside
+    window.addEventListener('click', function (event) {
+        if (!navbar.contains(event.target) && !hamburger.contains(event.target)) {
+            navbar.classList.remove('show');
+            body.style.overflow = ''; // Re-enable scrolling
+        }
+    });
+
 
     window.addEventListener('scroll', function () {
         var header = document.querySelector('header');
@@ -280,26 +313,8 @@
 
         lastScrollTop = scrollTop;
     });
-    const images = [
-        'static/black.jpg',
-        'static/green.jpg',
-        'static/kk.jpg'
-        // Add more image paths here
-    ];
-
-    // Target the image element
-    const slideshowImage = document.getElementById('slideshow');
-
-    let currentIndex = 0;
-
-    // Function to change the image at regular intervals
-    function changeImage() {
-        currentIndex = (currentIndex + 1) % images.length; // Cycle through images
-        slideshowImage.src = images[currentIndex];
-    }
-
-    // Set the interval (e.g., 3000ms = 3 seconds)
-    setInterval(changeImage, 3000);
+    
+    
 
     
 
