@@ -5,7 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Your Site{% endblock %}</title>
+    <title>{% block title %}Hitzz Web Design and Development Agency In Nepal{% endblock %}</title>
+    <meta name="description" content="Hitzz is a leading web design and development agency in Nepal. Discover affordable and creative website solutions tailored for your business.">
+    <link rel="canonical" href="https://hitzz.co">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -218,10 +220,10 @@
         </div>
         <nav>
             <ul id="navbar" class="navbar">
-                <li><a href="{% url 'work:work' %}">Work</a></li>
-                <li><a href="{% url 'work:services' %}">Services</a></li>
-                <li><a href="{% url 'work:about' %}">About</a></li>
-                <li><a href="{% url 'work:contact' %}">Contact</a> </li>
+                <li><a href="{% url 'work:work' %}" title="Explore our portfolio of web design projects">Our Work</a></li>
+            <li><a href="{% url 'work:services' %}" title="Discover our web design, branding, and SEO services">Our Services</a></li>
+            <li><a href="{% url 'work:about' %}" title="Learn more about Hitzz and our team">About Us</a></li>
+            <li><a href="{% url 'work:contact' %}" title="Get in touch with Hitzz for professional web design solutions">Contact Us</a></li>
                 
                 
             </ul>
