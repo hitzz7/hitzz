@@ -1,6 +1,14 @@
 from django.urls import path
 from . import views 
 from .views import demo_view
+from django.contrib.sitemaps.views import sitemap
+
+from .sitemaps import ProjectSitemap, StaticViewSitemap
+
+sitemaps = {
+    'projects': ProjectSitemap(),
+    'static': StaticViewSitemap(),
+}
 app_name = 'work'
 urlpatterns = [
     
@@ -16,4 +24,5 @@ urlpatterns = [
          path('web-design-startaproject /', views.start, name='start'),
          path('contactc/', views.contactc, name='contactc'),
     path('success/', views.success, name='success'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]

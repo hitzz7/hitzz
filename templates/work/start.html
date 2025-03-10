@@ -8,12 +8,12 @@
     <h1>Let's Start a New Project</h1>
     <p>We're excited to learn about your project! Please provide us with the details, and we'll get back to you as soon as possible.</p>
 
-    <div class="form-container">
-        <div class="form-image">
+    <div class="forms-container">
+        <div class="forms-image">
             <img src="{% static 'Hitz.png' %}" alt="Start Project Image">
         </div>
 
-        <form action="{% url 'work:contactc' %}" method="post">
+        <forms action="{% url 'work:contactc' %}" method="post">
             {% csrf_token %}
             
             <input type="text" id="name" name="name" placeholder="Name" required>
@@ -21,24 +21,32 @@
             <input type="mobile" id="mobile" name="mobile" placeholder="Phone number" required>
             <textarea id="description" name="description" placeholder="Tell us more about your project" required></textarea>
             <button type="submit">Get Started</button>
-        </form>
+        </forms>
     </div>
 </div>
+
+<div class="scrolling-text">
+    <span>Let's Work Together.</span>
+</div>
+
 
 <style>
     h1 {
         margin-left: 250px;
         margin-top: 20px;
+        font-size:30px;
+        font-family:"Calton",sans-serif;
     }
     p {
         margin-left: 250px;
+        font-family:"typo",sans-serif;
     }
     body {
         font-family: 'Roboto', sans-serif;
     }
     .start-project-section {
         padding: 40px;
-        background-color: #f9f9f9;
+        background-color:white;
         text-align: center;
     }
 
@@ -54,7 +62,7 @@
         color: #666;
     }
 
-    .form-container {
+    .forms-container {
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -64,11 +72,16 @@
         margin: 0 auto;
     }
 
-    .form-image {
+    .forms-image {
         flex: 1;
+        background: black;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    
+    justify-content: center;
+    align-items: center;
     }
 
-    .form-image img {
+    .forms-image img {
         max-width: 100%;
         height: auto;
         border-radius: 10px;
@@ -76,11 +89,11 @@
         transition: transform 0.3s ease;
     }
 
-    .form-image img:hover {
+    .forms-image img:hover {
         transform: scale(1.05);
     }
 
-    form {
+    forms {
         flex: 2;
         max-width: 900px;
         display: flex;
@@ -103,7 +116,7 @@
     }
 
     input:focus, textarea:focus {
-        border-color: #0097b2;
+        border-color: black;
         outline: none;
     }
 
@@ -113,12 +126,13 @@
 
     button {
         padding: 15px;
-        background-color: #0097b2;
+        background-color: #ffa500;
         color: white;
         font-size: 1.2rem;
         border: none;
-        border-radius: 5px;
+        border-radius: 25px;
         cursor: pointer;
+        font-family:"Helvetica",sans-serif;
         transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
@@ -148,19 +162,19 @@
             margin-bottom: 20px;
         }
 
-        .form-container {
+        .forms-container {
             flex-direction: column;
             align-items: center;
             gap: 20px;
         }
 
-        .form-image, form {
+        .forms-image, forms {
             flex: none;
             width: 100%;
             max-width: 90%;
         }
 
-        form {
+        forms {
             padding: 20px;
         }
 

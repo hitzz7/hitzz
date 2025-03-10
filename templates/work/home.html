@@ -5,453 +5,15 @@
 {% block title %}Home - Hitzz{% endblock %}
 
 {% block content %}
-<style>
-    body {
-        margin:0;
-        padding:0;
-        overflow-x: hidden;
-        font-family: 'Roboto', sans-serif;
-        
-    }
 
-    /* Styling for image and text container */
-    .image-text-container {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        margin: 40px auto;
-        max-width: 800px;
-    }
-
-    /* Styling for the image */
-    .bottom-image {
-        max-width: 500px;
-        margin-top: 400px;
-        width: 100%;
-        height: auto;
-        border-radius: 15px;
-        margin-right: 100px;
-        margin-left: -100px;
-    }
-
-    .bottom-image:hover {
-        transform: scale(1.05);
-    }
-    .about-i:hover{
-        transform:scale(1.05);
-    }
-
-    /* Styling for the text content */
-    .text-content {
-        max-width: 450px;
-        font-size: 18px;
-        line-height: 1.6;
-        margin-top: 250px;
-    }
-    a {
-        text-decoration: none; /* Removes the underline from all links */
-    }
-
-    .about-i {
-        display: block;
-        margin: -300px auto;
-        max-width: 1000px;
-        width: 100%;
-        height: auto;
-        border-radius: 15px;
-        position: relative;
-    }
-
-    .about-container {
-        display: block;
-        margin: -300px auto;
-        max-width: 1000px;
-        width: 100%;
-        height: auto;
-        border-radius: 15px;
-        position: relative;
-    }
-
-    .about-text {
-        position: absolute;
-        background-color: white;
-        color: black;
-        font-size: 48px;
-        font-weight: bold;
-        padding: 5px 20px;
-        border-radius: 10px;
-        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        transform: translateY(-50%);
-        margin-left: 100px;
-        margin-top: -50px;
-    }
-
-    .scrolling-text {
-        position: relative;
-        width: 100%;
-        height: 200px;
-        background-color: white;
-        overflow: hidden;
-        color: black;
-        text-align: center;
-        line-height: 150px;
-        margin: 20px;
-        font-size: 150px;
-        font-weight: bold;
-    }
-
-    .btn-container {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    /* Styling for the button */
-    .cta-btn {
-        position: absolute;
-        bottom: -100px;
-        left: 85%;
-        transform: translateX(-50%);
-        background-color: black;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 50px;
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-        z-index: 10;
-    }
-
-    .cta-btn:hover {
-        background-color: transparent;
-    }
-
-    h8 {
-        font-size: 2em;
-    }
-
-    .scrolling-text span {
-        display: inline-block;
-        white-space: nowrap;
-        position: relative;
-        animation: scroll 10s linear infinite;
-    }
-
-    .left-text-container {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: left;
-    }
-
-    .left-text-container h1 {
-        font-size: 24px;
-        margin: 10px 0;
-    }
-
-    .cta-button {
-        display: inline-block;
-        margin-top: 20px;
-        padding: 12px 24px;
-        background-color: white;
-        color: black;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-    }
-
-    .cta-button:hover {
-        background-color: #555;
-    }
-    .text-content:hover h2{
-        transform: scale(1.05);
-
-    }
-
-    /* Keyframes for scrolling text animation */
-    @keyframes scroll {
-        0% {
-            transform: translateX(100%);
-        }
-        100% {
-            transform: translateX(-100%);
-        }
-    }
-
-    /* Responsive styles */
-    @media (max-width: 768px) {
-        .image-text-container {
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .bottom-image {
-            margin: 0;
-        }
-
-        .text-content {
-            margin-top: 20px;
-        }
-        
-
-        .about-text {
-            font-size: 32px;
-            margin-left: 0;
-            text-align: center;
-        }
-
-        .scrolling-text {
-            font-size: 50px;
-            height: 100px;
-            line-height: 100px;
-        }
-
-        .cta-btn {
-            bottom: -50px;
-            left: 50%;
-        }
-
-        .services-content {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .left-text-container h1 {
-            font-size: 18px;
-        }
-
-        .cta-button {
-            padding: 10px 20px;
-        }
-        .namaste {
-            font-size: 36px;
-        }
-        
-        .text-overlay {
-            font-size: 28px;
-        }
-        
-        .text-a, .text-b {
-            font-size: 24px;
-        }
-        .soft {
-            max-width: 100%; /* Allow the image to take full width */
-            height: auto; /* Maintain aspect ratio */
-        }
-    }
-    
-
-    
-    
-
-    @media (max-width: 480px) {
-        .about-text {
-            font-size: 24px;
-        }
-        .image-text-container {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            margin: 40px auto;
-            max-width: 800px;
-        }
-        .about-text {
-            position: absolute;
-            background-color: white;
-            color: black;
-            font-size: 20px;
-            font-weight: bold;
-            
-            border-radius: 10px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            transform: translateY(-50%);
-            margin-left: 50px;
-            margin-top: 200px;
-        }
-        .image{
-            display:flex;
-            margin-top:50px;
-            align-items: center;
-            justify-content: center;
-            
-        }
-        .soft {
-            height: 500px; /* Set a specific height for mobile */
-            object-fit: cover; /* Ensure the image covers the height while maintaining aspect ratio */
-            transform: scale(1.1);
-            max-width:95%;
-            margin: 0 auto;
-            
-            
-        }
-
-        .scrolling-text {
-            font-size: 30px;
-            line-height: 70px;
-        }
-
-        .cta-btn {
-            bottom: -30px;
-            font-size: 4vw;
-            left:69%;
-        }
-
-        .cta-button {
-            font-size: 14px;
-        }
-        .namaste {
-            font-size: 3.5vw;
-            position:absolute;
-            top:13vh;
-            left:33%;
-            padding-left:20px;
-        }
-        .namaste::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -33%;  /* Moves the pseudo-element to the left side */
-            width: 40%;  /* Adjust the width to cover the desired portion */
-            height: 100%;
-            background-color: white;
-        }
-        
-        
-        .text-overlay {
-            font-size: 6vw;
-            top:17vh;
-            position:absolute;
-            left:32.3%;
-        }
-        
-        .text-a {
-            font-size: 6vw;
-            top:21vh;
-            position:absolute;
-            left:30%;
-
-        }
-        .text-b {
-            font-size: 6vw;
-            top:25vh;
-            position:absolute;
-            left:18.5%;
-
-        }
-        .left-text-container h3{
-            font-size:15px;
-            
-        }
-        .content{
-            text-align:center;
-            margin:50px auto 0;
-            
-
-        }
-        .content h1{
-            font-size:25px;
-            
-            
-        }
-        .content h2{
-            font-size:25px;
-        }
-        .services h4 {
-            font-size: 25px;
-            
-        }
-        .service-item h3 {
-            font-size: 50px;
-            margin: 0;
-        }
-        
-        /* Adjusting CTA button for mobile */
-        .cta-btn {
-            font-size: 14px;
-            padding: 8px 16px;
-            bottom: 290px;
-        }
-        .bb{
-            justify-content: center;
-            margin-top:20px;
-            
-        }
-        .brandd {
-            flex-wrap: wrap; /* Ensure images wrap on very small screens */
-        }
-
-        .brandd img {
-            max-width: 70px; /* Further reduce image size for small screens */
-            margin: 5px; /* Tighten spacing */
-        }
-        .projects h2{
-            font-size:25px;
-        }
-        .project-description{
-            font-size:20px;
-        }
-        .about-container {
-            display: block;
-            margin: 185px auto 400px;
-            max-width: 1000px;
-            width: 90%;
-            height: auto;
-            border-radius: 15px;
-            position: relative;
-        }
-        text-content h2 {
-            font-size:25px;
-        }
-
-
-    }
-    @media (max-width: 768px) and(max-height: 800px) {
-        .text-overlay {
-            font-size: 5vw;
-            left:30%; /* Adjust for smaller screens */
-        }
-    }
-    @media (max-width: 768px) and(max-height: 800px) {
-        .text-a {
-            font-size: 5vw;
-            left:28%; /* Adjust for smaller screens */
-        }
-    }
-    @media (max-width: 768px) and(max-height: 800px) {
-        .text-b {
-            font-size: 5vw;
-            left:18%; /* Adjust for smaller screens */
-        }
-    }
-    @media (max-width: 768px) and(max-height: 800px) {
-        .namaste {
-            font-size: 2.5vw;
-            top:13vh; /* Adjust for smaller screens */
-        }
-    }
-    @media (max-width: 768px) and (max-height: 900px) {
-        .cta-btn {
-            bottom: 15px; /* Adjust this value if needed for 900px height */
-        }
-    }
-    
-    @media (max-width: 768px) and (max-height: 800px) {
-        .cta-btn {
-            bottom: 150px; /* Adjust this value if needed for 800px height */
-        }
-    }
-    
-    
-    
-</style>
 
 
 <div class="image">
-    <video class="soft"autoplay loop muted poster="{% static 'v.png' %}">
-        <source src="{% static 'ck.mp4' %}" type="video/mp4" alt="Affordable web design by Hitzz in Nepal">
+    <video id="mainVideo" class="soft"autoplay  muted poster="{% static 'bill.png' %}">
+        <source id="videoSource" src="{% static 'bishankhuv.mp4' %}" type="video/mp4" alt="Affordable web design by Hitzz in Nepal">
         Your browser does not support the video tag.
     </video>
+    
     
     <div class="namaste">Namaste, We're Hitzz</div>
     <div class="text-overlay">A Web Design And</div>
@@ -463,6 +25,8 @@
 <div class="content">
     <div class="left-text-container">
         <h3>Who are we?</h3>
+        
+        
     </div>
     <h1>An independent web design</h1>
     <h1>and branding agency in Nepal</h1>
@@ -472,42 +36,96 @@
         <a href="{% url 'work:about' %}">About</a>
         <a href="{% url 'work:start' %}">Start a Project</a>
     </div>
-</div>
-
-<div class="brandd">
-    <img src="{% static 'jjbb-removebg.png' %}" alt="Image 1">
-    <img src="{% static 'Bishankhu (1).png' %}" alt="Image 2">
     
 </div>
 
-<div class="projects">
-    <h7 style="font-weight: bold;">Projects completed</h7>
-    <h2>Take a look at some of our Projects</h2>
-    <div class="project-gallery">
-        {% for project in projects %}
-        <a href="{% url 'work:project_detail' project.id %}">
-            <div class="project-item">
-                <!-- Loop through images and display only the featured one -->
-                {% for image in project.images.all %}
-                    {% if image.is_feature %}
-                        
-                            <img src="{{ image.image.url }}" alt="{{ project.title }} Featured Image">
-                        
-                    {% endif %}
-                {% endfor %}
-                <div class="project-description">{{ project.title }}</div>
-            </div>
-        </a>
-        {% endfor %}
+<div class="brandd">
+    <div class="brandd-inner">
+        <img src="{% static 'jjbb-removebg.png' %}" alt="Image 1">
+        <img style="transform:scale(1.5);" src="{% static 'Bishnu.png' %}" alt="Image 2">
+        <img style="transform:scale(1.5);" src="{% static 'l.png' %}" alt="Image 3">
+        <img style="transform:scale(0.7);" src="{% static '1.png' %}" alt="Image 4">
+        <img src="{% static 'br.png' %}" alt="Image 5">
+        
+        <!-- Duplicate images for seamless looping -->
+        <img src="{% static 'jjbb-removebg.png' %}" alt="Image 1">
+        <img style="transform:scale(1.5);" src="{% static 'Bishnu.png' %}" alt="Image 2">
+        <img style="transform:scale(1.5);" src="{% static 'l.png' %}" alt="Image 3">
+        <img style="transform:scale(0.7);" src="{% static '1.png' %}" alt="Image 4">
+        <img src="{% static 'br.png' %}" alt="Image 5">
+        <img src="{% static 'jjbb-removebg.png' %}" alt="Image 1">
+        <img style="transform:scale(1.5);" src="{% static 'Bishnu.png' %}" alt="Image 2">
+        <img style="transform:scale(1.5);" src="{% static 'l.png' %}" alt="Image 3">
+        <img style="transform:scale(0.7);" src="{% static '1.png' %}" alt="Image 4">
+        <img src="{% static 'br.png' %}" alt="Image 5">
     </div>
+    <h3 style="margin-top:40px; font-size:24px; color:#ffa500;" >Project Completed</h3>
 </div>
+
+<section class="project-section">
+    <div class="container">
+        <h2 class="section-title">Take a look at some of our Projects</h2>
+
+        <div class="project-grid">
+            <!-- Project Card 1 -->
+            <div class="project-wrapper">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="{% static 'v.png' %}" alt="Project 1">
+                    </div>
+                    <p class="project-heading">Jet Blue</p>
+                    <p class="project-text">Clothing Brand</p>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <a href="http://bishankhu.hitzz.co/" class="project-wrapper-2">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="{% static 'bish.png' %}" alt="Project 2">
+                    </div>
+                    <p class="project-heading">Bishankhu</p>
+                    <p class="project-text">Mustard Oil</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="project-grid">
+            <!-- Project Card 3 -->
+            <a href="https://khoorsani.hitzz.co/" class="project-wrapper">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="{% static 'khoorsani.png' %}" alt="Project 3">
+                    </div>
+                    <p class="project-heading">Khoorsani</p>
+                    <p class="project-text">Hot Chilli Oil</p>
+                </div>
+            </a>
+
+            <!-- Project Card 4 -->
+            <a href="http://baskinrobbins.hitzz.co/" class="project-wrapper-2">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="{% static 'baskin.png' %}" alt="Project 4">
+                    </div>
+                    <p class="project-heading">Baskin Robbins</p>
+                    <p class="project-text">Icecrems</p>
+                </div>
+            </a>
+        </div>
+        <div class="bottom-content">
+            <p class="bottom-text">Explore more of our amazing projects</p>
+            <a href="#" class="bottom-button">View All Projects</a>
+        </div>
+    </div>
+</section>
 
 <div class="services">
     <div class="s">
         <h1>Our Services<h1>
     </div>
     <div class="ss">
-        <p>We are a web design agency, and we’re on a mission to help you take the next step in your business.</p>
+        <p style="font-size:20px; color:#DFC6FD;">We are a web design agency, and we’re on a mission to help you take the next step in your business.</p>
         <a href="{% url 'work:services' %}" class="cta-button">Explore Our Services</a>
     </div>
 
@@ -532,23 +150,66 @@
     </div>
 </div>
 
-<div class="about-container">
-    <img src="{% static 'v.png' %}" alt="About Us Image" class="about-i">
-    <div class="about-text">Visit The Website</div>
+<img src="{% static 'mocklast.png' %}" alt="About Us Image" class="about-i">
+<div class="why-choose-us">
+    <h2>Why Build a Website with Our Agency?</h2>
+    <ul>
+        <li><strong>Mordern nad slick design that turns leads into customers</strong></li>
+        <li><strong>Get a website that ranks well on Google and attracts more visitors</strong></li>
+        <li><strong>Our websites load quickly and work perfectly on all devices</strong></li>
+        
+    </ul>
 </div>
+<div class="card-container">
+    <div class="card">
+      <img src="{% static 'idesign.jpg'%}" alt="Card Image" class="card-image">
+    </div>
+    <div class="card-description">
+      <h2>Artistic Webiste For Your Business</h2>
+      <p>A guy who is passionate about art's and craft's i try to bring by artestic nature to my website design and development.From a young age, drawing and creativity have been my foundation, and now, I’m dedicated to creating beautifully crafted websites that drive success for your business.</p>
+    </div>
+  </div>
+
 
 <!-- Container with Image and Text next to each other -->
-<div class="image-text-container">
-    <img src="{% static 'Hitz.png' %}" alt="Hitzz Logo" class="bottom-image">
-    <div class="text-content">
-        <h2>About Hitzz</h2>
-        <p>A guy who is passionate about art's and craft's i try to bring by artestic nature to my website design and development.From a young age, drawing and creativity have been my foundation, and now, I’m dedicated to creating beautifully crafted websites that drive success for your business.</p>
-    </div>
-</div>
+
+
 
 <div class="scrolling-text">
     <span>Let's Work Together.</span>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let video = document.getElementById("mainVideo");
+        let videoSource = document.getElementById("videoSource");
+
+        // List of video files
+        let videos = [
+            
+            "{% static 'baskinv.mp4' %}",
+            "{% static 'khoorsaniv.mp4' %}"
+        ];
+
+        let currentIndex = 0; // Keep track of the current video index
+
+        video.addEventListener("ended", function () {
+            currentIndex++; // Move to the next video
+
+            if (currentIndex >= videos.length) {
+                currentIndex = 0; // Loop back to the first video if all have played
+            }
+
+            videoSource.src = videos[currentIndex]; // Update video source
+            video.load(); // Reload video
+            video.play(); // Play new video
+        });
+
+        // Ensure the video starts playing on load
+        video.play();
+    });
+</script>
+
 
 
 

@@ -24,7 +24,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-secret-key')
 # DJANGO_SECRET_KEY = 'django-insecure-dg2@slsa^tu^&+)bn_1&p936ew+j)1!=e%*m3dp)$cs3b+u!%b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['hitzz.co','www.hitzz.co' ,'127.0.0.1','localhost']
 
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'work',
 ]
 

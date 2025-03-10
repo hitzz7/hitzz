@@ -9,10 +9,13 @@
     <meta name="description" content="Hitzz is a leading web design and development agency in Nepal. Discover affordable and creative website solutions tailored for your business.">
     <link rel="canonical" href="https://hitzz.co">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'home.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 <style>
     .hamburger {
@@ -70,11 +73,21 @@
             
             
         }
+        .navbar .btn-book {
+            align-self: flex-end;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 14px;
+            width: auto;
+            margin-right:40px;
+            text-align: center;
+            border-radius: 25px; /* Optional for rounded corners */
+          }
         
 
         .navbar.show {
             
-            height: 300px; /* Adjust based on content */
+            height: 400px; /* Adjust based on content */
     background-color: rgba(0, 0, 0, 0.8); /* Add a dark semi-transparent background */
     opacity: 1;
     
@@ -98,7 +111,6 @@
             margin-right: 40px;
             
         }
-
         .button {
             display: none;
         }
@@ -209,6 +221,21 @@
                 font-size: 16px; /* Adjust font size */
             }
         }
+        .btn-book {
+            padding: 10px 20px;
+            background-color: #0097b2;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left:auto;
+            transition: background 0.3s ease;
+        }
+        @media screen and (min-width: 1024px) {
+            #navbar .btn-book { 
+                display: none !important;
+            }
+        }
     
 </style>
 </head>
@@ -218,18 +245,20 @@
         <div class="brand">
             <a href="{% url 'work:demo_view' %}">Hitzz</a>
         </div>
+        
         <nav>
             <ul id="navbar" class="navbar">
-                <li><a href="{% url 'work:work' %}" title="Explore our portfolio of web design projects">Our Work</a></li>
-            <li><a href="{% url 'work:services' %}" title="Discover our web design, branding, and SEO services">Our Services</a></li>
-            <li><a href="{% url 'work:about' %}" title="Learn more about Hitzz and our team">About Us</a></li>
-            <li><a href="{% url 'work:contact' %}" title="Get in touch with Hitzz for professional web design solutions">Contact Us</a></li>
-                
+                <li><a href="{% url 'work:work' %}" title="Explore our portfolio of web design projects">Work</a></li>
+            <li><a href="{% url 'work:services' %}" title="Discover our web design, branding, and SEO services">Services</a></li>
+            <li><a href="{% url 'work:about' %}" title="Learn more about Hitzz and our team">About</a></li>
+            <li><a href="{% url 'work:contact' %}" title="Get in touch with Hitzz for professional web design solutions">Contact</a></li>
+            <a href="{% url 'work:start' %}" class="btn-book">Book a Coffee</a>
                 
             </ul>
+            
         </nav>
         <div class="button">
-            <a href="{% url 'work:start' %}">Let's Start</a>
+            <a href="{% url 'work:start' %}">Become a Client</a>
         </div>
         <div class="hamburger" id="hamburger">
             <div></div>
@@ -244,29 +273,67 @@
         {% endblock %}
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-left">
-                <p>&copy; 2024 Hitzz. All rights reserved.</p>
+    <footer class="footer">
+        <div class="row">
+            <!-- Logo Section -->
+            <div class="col">
+                <h1>Hitzz</h1>
+                <p>Artistic Webiste For Your Business.</p>
             </div>
-            <div class="footer-center">
-                <ul class="footer-links">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
+            
+            <!-- Contact Information -->
+            <div class="col">
+                <h4>Office<div class="underline"><span></span></div></h4>
+                <p>Phone: +977-9812345678</p>
+                <p>Email: info@itronz.net</p>
+                <p>Kathmandu, Nepal</p>
             </div>
-            <div class="footer-right">
-                <a href="https://facebook.com" target="_blank" class="social-icon">Facebook</a>
-                <a href="https://twitter.com" target="_blank" class="social-icon">Twitter</a>
-                <a href="https://instagram.com" target="_blank" class="social-icon">Instagram</a>
+            <div class="col">
+                <h4>Links
+                    <div class="underline"><span></span></div>
+                </h4>
+                <a href="/home"><p>Home</p></a>
+                <a href="/work"><p>Work</p></a>
+                <a href="/service"><p>Service</p></a>
+                <a href="/about"><p>About</p></a>
             </div>
+            <div class="col">
+                <h4>NewsLetter<div class="underline"><span></span></div></h4>
+                <form>
+                    <i class ="far fa-envelope"></i>
+                    <input type="email" placeholder="Enter email id" required>
+                    <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                </form>
+                <div class="social-icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-pinterest"></i>
+                </div>
+            </div>
+
+            
+            
+            
+            
+            <!-- Location and Map -->
+            
+            
+            <!-- Quick Links -->
+            
+            
         </div>
+        
+        <hr>
+        <p class="copyright">Hitzz . All Rights Are Reserved</p>
+        
+
     </footer>
 </body>
 <script>
     const hamburger = document.getElementById('hamburger');
     const navbar = document.getElementById('navbar');
+    const html = document.documentElement;
     const body = document.body;
 
     hamburger.addEventListener('click', function () {
@@ -274,9 +341,11 @@
 
         // Toggle scrolling
         if (navbar.classList.contains('show')) {
-            body.style.overflow = 'hidden'; // Disable scrolling
+            body.style.overflow = 'hidden';
+            html.style.overflow = 'hidden';
         } else {
-            body.style.overflow = ''; // Re-enable scrolling
+            body.style.overflow = '';
+            html.style.overflow = '';
         }
     });
 
@@ -284,7 +353,8 @@
     window.addEventListener('click', function (event) {
         if (!navbar.contains(event.target) && !hamburger.contains(event.target)) {
             navbar.classList.remove('show');
-            body.style.overflow = ''; // Re-enable scrolling
+            body.style.overflow = '';
+            html.style.overflow = '';
         }
     });
 

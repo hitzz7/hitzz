@@ -6,14 +6,17 @@
 {% block content %}
 <style>
     h3 {
-        font-size: 2rem;
+        font-size: 3rem;
         margin-top: 5px;
         margin-bottom: 5px;
         text-align: right;
         margin-right: 100px;
+        font-family:"Calton",sans-serif;
     }
     body{
         font-family: 'Roboto', sans-serif;
+        margin:0;
+        padding:0;
     }
 
     h1 {
@@ -22,6 +25,7 @@
         text-align: left;
         margin-left: 100px;
         margin-top: 50px;
+        font-family:"typo",sans-serif;
     }
 
     /* Horizontal line section */
@@ -39,7 +43,8 @@
     }
 
     .word-container {
-        background-color: black; /* Background color for the word section */
+        background-color: #ffa500; 
+        /* Background color for the word section */
         padding: 20px 0; /* Padding for spacing */
         text-align: center; /* Center the text */
         width: 100%;
@@ -89,7 +94,7 @@
         }
     
         h3 {
-            font-size: 1rem;
+            font-size: 1.5rem;
             margin: 5px 0;
         }
     
@@ -110,8 +115,101 @@
             width: 95%; /* Full width on mobile */
         }
     }
-
+    .cards {
+        width: 1000px; /* Increased card width to 1000px */
+        min-height: 450px; /* Taller card to match larger width */
+        background: #ffff;
+        box-shadow: 0 1px 25px rgba(0,0,0,0.2);
+        margin: 60px auto; /* Center the card horizontally */
+        padding: 30px; /* Increased padding */
+        display: flex;
+        align-items: flex-start;
+        gap: 40px; /* Larger gap between elements */
+        border-radius: 16px; /* Larger border radius */
+    }
     
+    .cards-image {
+        width: 450px; /* Larger image container */
+        height: 450px;
+        border-radius: 12px; /* Square with slight rounding */
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+    
+    .cards-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .cards-content {
+        flex: 1;
+        padding-right: 20px;
+    }
+    
+    .cards-title {
+        margin: 0;
+        font-size: 2rem; /* Larger title */
+        color: #333;
+        font-family:"Calton",sans-serif;
+        margin-bottom: 20px;
+    }
+    
+    .cards-description {
+        margin: 0;
+        font-size: 1.2rem; /* Larger description */
+        color: #666;
+        font-family:"typo",sans-serif;
+        line-height: 1.6;
+    }
+    
+    @media (max-width: 480px) {
+        .cards {
+            flex-direction: column; /* Stack elements vertically */
+            width: 95%; /* Use more screen space */
+            padding: 15px; /* Reduce padding */
+            gap: 20px; /* Reduce gap */
+        }
+    
+        .cards-image {
+            width: 100%; /* Make image responsive */
+            height: auto; /* Allow height to adjust */
+            border-radius: 8px; /* Slight rounding */
+        }
+    
+        .cards-image img {
+            height: auto;
+        }
+    
+        .cards-title {
+            font-size: 1.5rem; /* Reduce title size */
+        }
+    
+        .cards-description {
+            font-size: 1rem; /* Reduce text size */
+        }
+    }
+    .cards-list {
+        padding-left: 20px;
+      }
+      
+      .cards-list li {
+        font-size: 18px;
+        color: #444;
+        margin-bottom: 8px;
+        position: relative;
+        font-family:"typo",sans-serif;
+        list-style: none;
+      }
+      
+      .cards-list li::before {
+        content: "•";
+        color:black; /* Your brand color */
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+      }
 </style>
 
 <h1>Services</h1>
@@ -127,14 +225,81 @@
 </div>
 
 <!-- Services section without numbering and underlines -->
-<div class="services-container">
-    <div>Website Design</div>
-    <div>Branding & Identity</div>
-    <div>Search Engine Optimization (SEO)</div>
-    <div>Graphic Design</div>
-    <div>Web Development</div>
-</div>
+<div class="cards">
+    <div class="cards-image">
+      <img src="{% static 's1.jpg'%}" alt="Card Image">
+    </div>
+    <div class="cards-content">
+      <h3 class="cards-title">Website Design</h3>
+      <p class="cards-description">UI/UX, wireframes, research and development — we understand all areas of web design. We can take a start-up business with nothing to a fully functioning brand online and offline. We can revamp an existing website or take a successful brand to the next level.</p>
+      <ul class="cards-list">
+        <li>Custom UI/UX design for a seamless user experience</li>
+        <li>Responsive and mobile-friendly website layouts</li>
+        <li>Modern, visually appealing design tailored to your brand</li>
+        
+        <li>Conversion-focused design for better engagement</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cards">
+    <div class="cards-image">
+      <img src="{% static 's2.jpg'%}" alt="Card Image">
+    </div>
+    <div class="cards-content">
+      <h3 class="cards-title">Branding</h3>
+      <p class="cards-description">At our web design agency, we provide comprehensive digital solutions tailored to elevate your brand and online presence. We ensure consistency across all platforms, helping you build trust and credibility with your audience.We create a brand that you're proud of, and want to shout about.</p>
+      <ul class="cards-list">
+        <li>Custom logo design, typography, and brand strategy</li>
+        <li>Consistent branding across digital and print platforms</li>
+        <li>Establishes a strong and recognizable market presence</li>
+    </ul>
+    </div>
+  </div>
+  <div class="cards">
+    <div class="cards-image">
+      <img src="{% static 's3.jpg'%}" alt="Card Image">
+    </div>
+    <div class="cards-content">
+      <h3 class="cards-title">SEO</h3>
+      <p class="cards-description">We also offer Search Engine Optimization (SEO) services to improve your website’s visibility and drive organic traffic. Our SEO strategies include keyword research, on-page and off-page optimization, technical SEO, and speed optimization.
 
+        Let us help you create a powerful digital identity with our expert branding, web design, development, and SEO services! </p>
+        <ul class="cards-list">
+            <li>Keyword research & content optimization for higher rankings</li>
+            <li>SEO strategies for organic growth</li>
+            <li>Technical SEO, speed optimization, and mobile-first indexing</li>
+        </ul>
+    </div>
+  </div>
+  <div class="cards">
+    <div class="cards-image">
+      <img src="{% static 's4.jpg'%}" alt="Card Image">
+    </div>
+    <div class="cards-content">
+      <h3 class="cards-title">E-commers Webiste</h3>
+      <p class="cards-description">Our E-Commerce Development services help create fully functional online stores with smooth and secure shopping experiences. We develop custom e-commerce websites with features such as product management, inventory tracking, secure payment gateway integration, and user-friendly checkout processes. Our e-commerce solutions are designed for performance, scalability, and conversion optimization to help you maximize sales.</p>
+      <ul class="cards-list">
+        <li>Fully functional online stores with smooth user experience</li>
+        <li>Secure payment gateways and easy checkout process</li>
+        <li>Product management,inventory tracking,order processing</li>
+    </ul>
+    </div>
+  </div>
+  <div class="cards">
+    <div class="cards-image">
+      <img src="{% static 's5.jpg'%}" alt="Card Image">
+    </div>
+    <div class="cards-content">
+      <h3 class="cards-title">Website Design</h3>
+      <p class="cards-description">We build high-performance, scalable, and secure websites tailored to your business needs. Our custom-coded solutions and CMS-based websites prioritize efficiency, security, and functionality.</p>
+      <ul class="cards-list">
+        <li>High-performance, secure, and scalable websites</li>
+        <li>Custom-coded solutions and seamless integrations</li>
+        <li>Optimized for speed, security, and functionality</li>
+    </ul>
+    </div>
+  </div>
+  
 <script>
     const words = ["CREATIVE", "INNOVATIVE", "PROFESSIONAL", "DYNAMIC", "EFFICIENT"];
     const animatedWordElement = document.getElementById("animated-word");
@@ -151,6 +316,30 @@
 
     setInterval(changeWord, 2000);
     changeWord();
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".card");
+    
+        const checkVisibility = () => {
+            cards.forEach((card) => {
+                const cardTop = card.getBoundingClientRect().top;
+                const cardBottom = card.getBoundingClientRect().bottom;
+    
+                // Check if the card is in the viewport
+                if (cardTop < window.innerHeight && cardBottom > 0) {
+                    card.classList.add("active");
+                } else {
+                    card.classList.remove("active");
+                }
+            });
+        };
+    
+        // Initial check
+        checkVisibility();
+    
+        // Check on scroll
+        window.addEventListener("scroll", checkVisibility);
+    });
 </script>
 
 {% endblock %}
