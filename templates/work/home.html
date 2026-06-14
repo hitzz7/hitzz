@@ -9,8 +9,13 @@
 
 
 <div class="image">
-    <video class="soft" autoplay loop muted>
-        <source src="{% static 'express.mp4' %}" type="video/mp4">
+    <video class="soft" id="mainVideo" autoplay muted playsinline
+           {% if hero_videos|length <= 1 %}loop{% endif %}>
+        {% if hero_videos %}
+        <source id="videoSource" src="{{ hero_videos.0.video.url }}" type="video/mp4">
+        {% else %}
+        <source id="videoSource" src="{% static 'express.mp4' %}" type="video/mp4">
+        {% endif %}
         Your browser does not support the video tag.
     </video>
     
@@ -41,23 +46,20 @@
 
 <div class="brandd">
     <div class="brandd-inner">
-        <img src="{% static 'jjbb-removebg.png' %}" alt="Image 1">
-        <img style="transform:scale(1.5);" src="{% static 'bishnu.png' %}" alt="Image 2">
-        <img style="transform:scale(1.5);" src="{% static 'l.png' %}" alt="Image 3">
-        <img style="transform:scale(0.7);" src="{% static '1.png' %}" alt="Image 4">
-        <img src="{% static 'br.png' %}" alt="Image 5">
-        
-        <!-- Duplicate images for seamless looping -->
-        <img src="{% static 'jjbb-removebg.png' %}" alt="Image 1">
-        <img style="transform:scale(1.5);" src="{% static 'bishnu.png' %}" alt="Image 2">
-        <img style="transform:scale(1.5);" src="{% static 'l.png' %}" alt="Image 3">
-        <img style="transform:scale(0.7);" src="{% static '1.png' %}" alt="Image 4">
-        <img src="{% static 'br.png' %}" alt="Image 5">
-        <img src="{% static 'jjbb-removebg.png' %}" alt="Image 1">
-        <img style="transform:scale(1.5);" src="{% static 'bishnu.png' %}" alt="Image 2">
-        <img style="transform:scale(1.5);" src="{% static 'l.png' %}" alt="Image 3">
-        <img style="transform:scale(0.7);" src="{% static '1.png' %}" alt="Image 4">
-        <img src="{% static 'br.png' %}" alt="Image 5">
+        {% for logo in brand_logos %}
+        <img {% if logo.scale != 1 %}style="transform:scale({{ logo.scale }});"{% endif %}
+             src="{{ logo.logo.url }}" alt="{{ logo.name }}">
+        {% endfor %}
+
+        {% for logo in brand_logos %}
+        <img {% if logo.scale != 1 %}style="transform:scale({{ logo.scale }});"{% endif %}
+             src="{{ logo.logo.url }}" alt="{{ logo.name }}">
+        {% endfor %}
+
+        {% for logo in brand_logos %}
+        <img {% if logo.scale != 1 %}style="transform:scale({{ logo.scale }});"{% endif %}
+             src="{{ logo.logo.url }}" alt="{{ logo.name }}">
+        {% endfor %}
     </div>
     <h3 style="margin-top:40px; font-size:24px; color:#ffa500;" >Project Completed</h3>
 </div>
@@ -66,56 +68,35 @@
     <div class="container">
         <h2 class="section-title">Take a look at some of our Projects</h2>
 
+        {% for project in projects %}
+            {% if forloop.counter0|divisibleby:2 %}
         <div class="project-grid">
-            <!-- Project Card 1 -->
-            <div class="project-wrapper">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="{% static 'v.png' %}" alt="Project 1">
-                    </div>
-                    <p class="project-heading">Jet Blue</p>
-                    <p class="project-text">Clothing Brand</p>
-                </div>
-            </div>
+            {% endif %}
 
-            <!-- Project Card 2 -->
-            <a href="http://bishankhu.hitzz.co/" class="project-wrapper-2">
+            <a href="{% if project.link %}{{ project.link }}{% else %}#{% endif %}"
+      
+               class="{% cycle 'project-wrapper' 'project-wrapper-2' %}">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="{% static 'bish.png' %}" alt="Project 2">
+                        {% if project.featured_image %}
+                        <img src="{{ project.featured_image.url }}" alt="{{ project.title }}">
+                        {% endif %}
                     </div>
-                    <p class="project-heading">Bishankhu</p>
-                    <p class="project-text">Mustard Oil</p>
+                    <p class="project-heading">{{ project.title }}</p>
+                    <p class="project-text">{{ project.category.name }}</p>
                 </div>
             </a>
+
+            {% if forloop.counter|divisibleby:2 or forloop.last %}
         </div>
+            {% endif %}
+        {% empty %}
+        <p>No projects available yet.</p>
+        {% endfor %}
 
-        <div class="project-grid">
-            <!-- Project Card 3 -->
-            <a href="https://khoorsani.hitzz.co/" class="project-wrapper">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="{% static 'khoorsani.png' %}" alt="Project 3">
-                    </div>
-                    <p class="project-heading">Khoorsani</p>
-                    <p class="project-text">Hot Chilli Oil</p>
-                </div>
-            </a>
-
-            <!-- Project Card 4 -->
-            <a href="http://baskinrobbins.hitzz.co/" class="project-wrapper-2">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="{% static 'baskin.png' %}" alt="Project 4">
-                    </div>
-                    <p class="project-heading">Baskin Robbins</p>
-                    <p class="project-text">Icecrems</p>
-                </div>
-            </a>
-        </div>
         <div class="bottom-content">
             <p class="bottom-text">Explore more of our amazing projects</p>
-            <a href="#" class="bottom-button">View All Projects</a>
+            <a href="{% url 'work:work' %}" class="bottom-button">View All Projects</a>
         </div>
     </div>
 </section>
@@ -142,7 +123,7 @@
             <h3>Website</h3>
         </div>
         <div class="service-item" data-image="static/website-thumbnail.jpg">
-            <h3>Design</h3>
+            <h3>Google Ads</h3>
         </div>
         <div class="service-item" data-image="static/website-thumbnail.jpg">
             <h3>Development</h3>
@@ -154,9 +135,9 @@
 <div class="why-choose-us">
     <h2>Why Build a Website with Our Agency?</h2>
     <ul>
-        <li><strong>Mordern nad slick design that turns leads into customers</strong></li>
-        <li><strong>Get a website that ranks well on Google and attracts more visitors</strong></li>
-        <li><strong>Our websites load quickly and work perfectly on all devices</strong></li>
+        <li><strong>Modern design with clean typography and intuitive layouts</strong></li>
+        <li><strong>SEO-optimized structure that helps you rank higher on Google</strong></li>
+        <li><strong>Fast-loading, mobile-responsive websites built to convert visitors</strong></li>
         
     </ul>
 </div>
@@ -166,7 +147,7 @@
     </div>
     <div class="card-description">
       <h2>Artistic Webiste For Your Business</h2>
-      <p>A guy who is passionate about art's and craft's i try to bring by artestic nature to my website design and development.From a young age, drawing and creativity have been my foundation, and now, I’m dedicated to creating beautifully crafted websites that drive success for your business.</p>
+      <p>A lifelong artist at heart, I channel my passion for drawing and creativity into every website I design—crafting visually stunning, purposeful digital experiences that help your business thrive </p>
     </div>
   </div>
 
@@ -184,28 +165,31 @@
         let video = document.getElementById("mainVideo");
         let videoSource = document.getElementById("videoSource");
 
-        // List of video files
         let videos = [
-            
-            "{% static 'baskinv.mp4' %}",
-            "{% static 'khoorsaniv.mp4' %}"
+            {% for hero_video in hero_videos %}
+            "{{ hero_video.video.url }}"{% if not forloop.last %},{% endif %}
+            {% endfor %}
         ];
 
-        let currentIndex = 0; // Keep track of the current video index
+        if (videos.length <= 1) {
+            video.play();
+            return;
+        }
+
+        let currentIndex = 0;
 
         video.addEventListener("ended", function () {
-            currentIndex++; // Move to the next video
+            currentIndex++;
 
             if (currentIndex >= videos.length) {
-                currentIndex = 0; // Loop back to the first video if all have played
+                currentIndex = 0;
             }
 
-            videoSource.src = videos[currentIndex]; // Update video source
-            video.load(); // Reload video
-            video.play(); // Play new video
+            videoSource.src = videos[currentIndex];
+            video.load();
+            video.play();
         });
 
-        // Ensure the video starts playing on load
         video.play();
     });
 </script>

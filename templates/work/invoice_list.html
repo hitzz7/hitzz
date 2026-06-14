@@ -1,0 +1,64 @@
+{% extends './navbar.html' %}
+
+{% block title %}Invoices - Hitzz{% endblock %}
+
+{% block content %}
+<style>
+    .invoice-page { max-width: 1000px; margin: 40px auto; padding: 0 20px; font-family: 'Roboto', sans-serif; }
+    .invoice-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+    .invoice-header h1 { font-size: 2rem; margin: 0; }
+    .btn { display: inline-block; padding: 10px 20px; background: #ffa500; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; }
+    .btn:hover { background: #e69500; color: #fff; }
+    .invoice-table { width: 100%; border-collapse: collapse; background: #fff; }
+    .invoice-table th, .invoice-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #eee; }
+    .invoice-table th { background: #f5f5f5; font-weight: 600; }
+    .status { padding: 4px 10px; border-radius: 12px; font-size: 0.85rem; font-weight: 500; }
+    .status-draft { background: #e0e0e0; }
+    .status-sent { background: #fff3cd; }
+    .status-paid { background: #d4edda; }
+    .status-cancelled { background: #f8d7da; }
+    .actions a { margin-right: 10px; color: #0097b2; text-decoration: none; }
+    .empty { text-align: center; padding: 40px; color: #666; }
+</style>
+
+<div class="invoice-page">
+    <div class="invoice-header">
+        <h1>Invoices</h1>
+        <a href="{% url 'work:invoice_create' %}" class="btn">+ New Invoice</a>
+    </div>
+
+    {% if invoices %}
+    <table class="invoice-table">
+        <thead>
+            <tr>
+                <th>Invoice #</th>
+                <th>Client</th>
+                <th>Issue Date</th>
+                <th>Due Date</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for invoice in invoices %}
+            <tr>
+                <td>{{ invoice.invoice_number }}</td>
+                <td>{{ invoice.client_name }}</td>
+                <td>{{ invoice.issue_date }}</td>
+                <td>{{ invoice.due_date }}</td>
+                <td>Rs. {{ invoice.total }}</td>
+                <td><span class="status status-{{ invoice.status }}">{{ invoice.get_status_display }}</span></td>
+                <td class="actions">
+                    <a href="{% url 'work:invoice_detail' invoice.pk %}">View</a>
+                    <a href="{% url 'work:invoice_edit' invoice.pk %}">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="empty">No invoices yet. <a href="{% url 'work:invoice_create' %}">Create your first invoice</a>.</p>
+    {% endif %}
+</div>
+{% endblock %}

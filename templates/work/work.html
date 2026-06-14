@@ -106,53 +106,33 @@
         <div class="container">
             
     
-            <div class="project-grid">
-                <!-- Project Card 1 -->
-                <div class="project-wrapper">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="{% static 'v.png' %}" alt="Project 1">
-                        </div>
-                        <p class="project-heading">Jet Blue</p>
-                        <p class="project-text">Clothing Brand</p>
+            
+            {% for project in projects %}
+            {% if forloop.counter0|divisibleby:2 %}
+        <div class="project-grid">
+            {% endif %}
+
+            <a href="{% if project.link %}{{ project.link }}{% else %}#{% endif %}"
+      
+               class="{% cycle 'project-wrapper' 'project-wrapper-2' %}">
+                <div class="project-card">
+                    <div class="project-image">
+                        {% if project.featured_image %}
+                        <img src="{{ project.featured_image.url }}" alt="{{ project.title }}">
+                        {% endif %}
                     </div>
+                    <p class="project-heading">{{ project.title }}</p>
+                    <p class="project-text">{{ project.category.name }}</p>
                 </div>
-    
-                <!-- Project Card 2 -->
-                <a href="http://bishankhu.hitzz.co/" class="project-wrapper-2">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="{% static 'bish.png' %}" alt="Project 2">
-                        </div>
-                        <p class="project-heading">Bishankhu</p>
-                        <p class="project-text">Mustard Oil</p>
-                    </div>
-                </a>
-            </div>
-    
-            <div class="project-grid">
-                <!-- Project Card 3 -->
-                <a href="https://khoorsani.hitzz.co/" class="project-wrapper">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="{% static 'khoorsani.png' %}" alt="Project 3">
-                        </div>
-                        <p class="project-heading">Khoorsani</p>
-                        <p class="project-text">Hot Chilli Oil</p>
-                    </div>
-                </a>
-    
-                <!-- Project Card 4 -->
-                <a href="http://baskinrobbins.hitzz.co/" class="project-wrapper-2">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="{% static 'baskin.png' %}" alt="Project 4">
-                        </div>
-                        <p class="project-heading">Baskin Robbins</p>
-                        <p class="project-text">Icecrems</p>
-                    </div>
-                </a>
-            </div>
+            </a>
+
+            {% if forloop.counter|divisibleby:2 or forloop.last %}
+        </div>
+            {% endif %}
+        {% empty %}
+        <p>No projects available yet.</p>
+        {% endfor %}
+
             
         </div>
     </section>

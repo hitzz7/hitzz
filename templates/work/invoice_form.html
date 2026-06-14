@@ -1,0 +1,255 @@
+{% extends './invoice_base.html' %}
+
+{% block title %}{{ title }} - Hitzz{% endblock %}
+
+{% block extra_css %}
+<style>
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+    }
+    .page-header h1 { margin: 0; font-size: 1.75rem; }
+    .page-header a { color: #0097b2; text-decoration: none; font-size: 0.95rem; }
+
+    .card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 28px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .section-title {
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 0 0 16px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #ffa500;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 20px;
+        margin-bottom: 20px;
+    }
+    .form-grid .full { grid-column: 1 / -1; }
+
+    .field label {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #444;
+    }
+    .field input,
+    .field select,
+    .field textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font: inherit;
+        background: #fff;
+    }
+    .field textarea { resize: vertical; min-height: 80px; }
+    .error { color: #c00; font-size: 0.8rem; margin-top: 4px; }
+
+    .items-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+    }
+    .items-table th {
+        text-align: left;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: #666;
+        padding: 8px 10px;
+        border-bottom: 2px solid #eee;
+    }
+    .items-table th.type { width: 150px; }
+    .items-table select {
+        width: 100%;
+        padding: 10px 8px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font: inherit;
+    }
+    .items-hint {
+        font-size: 0.85rem;
+        color: #666;
+        margin: 0 0 12px;
+    }
+    .items-table th.del { width: 70px; text-align: center; }
+    .items-table td {
+        padding: 8px 10px;
+        vertical-align: middle;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    .items-table input {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font: inherit;
+    }
+    .items-table .delete-cell {
+        text-align: center;
+        font-size: 0.8rem;
+        color: #888;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+    }
+    .btn {
+        padding: 12px 24px;
+        border: none;
+        border-radius: 6px;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+    }
+    .btn-primary { background: #ffa500; color: #fff; }
+    .btn-secondary { background: #e8e8e8; color: #333; }
+
+    @media (max-width: 640px) {
+        .form-grid { grid-template-columns: 1fr; }
+        .items-table thead { display: none; }
+        .items-table tr { display: block; margin-bottom: 16px; }
+        .items-table td { display: block; padding: 4px 0; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="invoice-shell">
+    <div class="page-header">
+        <h1>{{ title }}</h1>
+        <a href="{% url 'work:invoice_list' %}">← Back to invoices</a>
+    </div>
+
+    <div class="card">
+        <form method="post">
+            {% csrf_token %}
+
+            <p class="section-title">Client Details</p>
+            <div class="form-grid">
+                <div class="field">
+                    <label for="{{ form.client_name.id_for_label }}">Client Name</label>
+                    {{ form.client_name }}
+                    {% if form.client_name.errors %}<div class="error">{{ form.client_name.errors }}</div>{% endif %}
+                </div>
+                <div class="field">
+                    <label for="{{ form.client_email.id_for_label }}">Client Email</label>
+                    {{ form.client_email }}
+                </div>
+                <div class="field full">
+                    <label for="{{ form.client_address.id_for_label }}">Client Address</label>
+                    {{ form.client_address }}
+                </div>
+            </div>
+
+            <p class="section-title">Invoice Details</p>
+            <div class="form-grid">
+                <div class="field">
+                    <label for="{{ form.issue_date.id_for_label }}">Issue Date</label>
+                    {{ form.issue_date }}
+                </div>
+                <div class="field">
+                    <label for="{{ form.due_date.id_for_label }}">Due Date</label>
+                    {{ form.due_date }}
+                    {% if form.due_date.errors %}<div class="error">{{ form.due_date.errors }}</div>{% endif %}
+                </div>
+                <div class="field">
+                    <label for="{{ form.tax_rate.id_for_label }}">Tax Rate (%)</label>
+                    {{ form.tax_rate }}
+                </div>
+                <div class="field">
+                    <label for="{{ form.status.id_for_label }}">Status</label>
+                    {{ form.status }}
+                </div>
+                <div class="field full">
+                    <label for="{{ form.notes.id_for_label }}">Notes</label>
+                    {{ form.notes }}
+                </div>
+            </div>
+
+            <p class="section-title">Line Items</p>
+            <p class="items-hint">
+                Use <strong>Charge / Service</strong> for work billed.
+                Use <strong>Advance Paid</strong> for payments already received.
+                Use <strong>Remaining Due</strong> for the balance left to pay (qty 1, amount = balance).
+            </p>
+            {{ formset.management_form }}
+            <table class="items-table">
+                <thead>
+                    <tr>
+                        <th class="type">Type</th>
+                        <th>Description</th>
+                        <th class="num">Qty</th>
+                        <th class="num">Amount (Rs.)</th>
+                        <th class="del">Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item_form in formset %}
+                    <tr class="item-row">
+                        <td>{{ item_form.item_type }}</td>
+                        <td>
+                            {{ item_form.description }}
+                            {{ item_form.id }}
+                        </td>
+                        <td>{{ item_form.quantity }}</td>
+                        <td>{{ item_form.unit_price }}</td>
+                        <td class="delete-cell">
+                            {% if item_form.instance.pk %}{{ item_form.DELETE }}{% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="form-actions">
+                <a href="{% url 'work:invoice_list' %}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary">Save & Download PNG</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const typeLabels = {
+        charge: '',
+        advance_paid: 'Advance Paid',
+        remaining_due: 'Remaining Due',
+    };
+
+    document.querySelectorAll('.item-row').forEach(function (row) {
+        const typeSelect = row.querySelector('.item-type-select');
+        const descInput = row.querySelector('input[name$="-description"]');
+        if (!typeSelect || !descInput) return;
+
+        typeSelect.addEventListener('change', function () {
+            const label = typeLabels[this.value];
+            if (label && (!descInput.value || Object.values(typeLabels).includes(descInput.value))) {
+                descInput.value = label;
+            }
+            if (this.value !== 'charge') {
+                const qtyInput = row.querySelector('input[name$="-quantity"]');
+                if (qtyInput && !qtyInput.value) qtyInput.value = 1;
+            }
+        });
+    });
+</script>
+{% endblock %}

@@ -699,8 +699,13 @@
     </div>
 </div>
 <div class="image">
-    <video id="mainVideo" class="soft"autoplay  muted poster="{% static 'bill.png' %}">
+    <video id="mainVideo" class="soft" autoplay muted playsinline poster="{% static 'bill.png' %}"
+           {% if hero_videos|length <= 1 %}loop{% endif %}>
+        {% if hero_videos %}
+        <source id="videoSource" src="{{ hero_videos.0.video.url }}" type="video/mp4" alt="Affordable web design by Hitzz in Nepal">
+        {% else %}
         <source id="videoSource" src="{% static 'bishankhuv.mp4' %}" type="video/mp4" alt="Affordable web design by Hitzz in Nepal">
+        {% endif %}
         Your browser does not support the video tag.
     </video>
 </div>
@@ -716,26 +721,22 @@
         </div>
     </div>
 </div>
-
 <div class="brandd">
   <div class="brandd-inner">
-      <img src="{% static 'jjbb-removebg.png' %}" alt="Image 1">
-      <img style="transform:scale(1.5);" src="{% static 'bishnu.png' %}" alt="Image 2">
-      <img style="transform:scale(1.5);" src="{% static 'l.png' %}" alt="Image 3">
-      <img style="transform:scale(0.7);" src="{% static '1.png' %}" alt="Image 4">
-      <img src="{% static 'br.png' %}" alt="Image 5">
-      
-      <!-- Duplicate images for seamless looping -->
-      <img src="{% static 'jjbb-removebg.png' %}" alt="Image 1">
-      <img style="transform:scale(1.5);" src="{% static 'bishnu.png' %}" alt="Image 2">
-      <img style="transform:scale(1.5);" src="{% static 'l.png' %}" alt="Image 3">
-      <img style="transform:scale(0.7);" src="{% static '1.png' %}" alt="Image 4">
-      <img src="{% static 'br.png' %}" alt="Image 5">
-      <img src="{% static 'jjbb-removebg.png' %}" alt="Image 1">
-      <img style="transform:scale(1.5);" src="{% static 'bishnu.png' %}" alt="Image 2">
-      <img style="transform:scale(1.5);" src="{% static 'l.png' %}" alt="Image 3">
-      <img style="transform:scale(0.7);" src="{% static '1.png' %}" alt="Image 4">
-      <img src="{% static 'br.png' %}" alt="Image 5">
+      {% for logo in brand_logos %}
+      <img {% if logo.scale != 1 %}style="transform:scale({{ logo.scale }});"{% endif %}
+           src="{{ logo.logo.url }}" alt="{{ logo.name }}">
+      {% endfor %}
+
+      {% for logo in brand_logos %}
+      <img {% if logo.scale != 1 %}style="transform:scale({{ logo.scale }});"{% endif %}
+           src="{{ logo.logo.url }}" alt="{{ logo.name }}">
+      {% endfor %}
+
+      {% for logo in brand_logos %}
+      <img {% if logo.scale != 1 %}style="transform:scale({{ logo.scale }});"{% endif %}
+           src="{{ logo.logo.url }}" alt="{{ logo.name }}">
+      {% endfor %}
   </div>
   
 </div>
