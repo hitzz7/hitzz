@@ -5,12 +5,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Hitzz Web Design and Development Agency In Kathmandu,Nepal{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     
-    <meta name="description" content="Hitzz is a leading web design and development agency in Kathmandu,Nepal. Discover affordable and creative website solutions tailored for your business.">
-    <link rel="canonical" href="https://hitzz.co">
-    
-    <meta name="keywords" content="Hitzz, web design, web design agency, web development, web development agency, Kathmandu, Nepal, website, websites, web, web development company, web design company, Kathmandu web design, Kathmandu web development, Nepal web design, Nepal web development, Kathmandu website design, Kathmandu website development, Nepal website design, Nepal website development, web design Kathmandu, web development Kathmandu, website design Kathmandu, website development Kathmandu, web design Nepal, web development Nepal, website design Nepal, website development Nepal,Search Engine Optimization,Search Engine Optimization Nepal,Search Engine Optimization Kathmandu,googleadsense,googleadsense nepal,googleadsense kathmandu">
+    <meta name="description" content="{% block meta_description %}{% endblock %}" />
+    <link rel="canonical" href="{% block canonical_url %}{% endblock %}" />
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Hitzz Web Design and Development Agency In Kathmandu,Nepal">
