@@ -59,7 +59,7 @@ def generate_invoice_png(invoice):
               invoice.invoice_number, fill=dark, font=heading_font)
     y += 50
 
-    draw.text((padding, y), 'Hitzz', fill=dark, font=heading_font)
+    draw.text((padding, y), 'hitzz.co', fill=dark, font=heading_font)
     y += line_h
     draw.text((padding, y), 'Web Design & Development', fill=gray, font=body_font)
     y += line_h
