@@ -57,6 +57,7 @@ class BrandLogo(models.Model):
 class HeroVideo(models.Model):
     name = models.CharField(max_length=100)
     video = models.FileField(upload_to='hero_videos/')
+    poster = models.ImageField(upload_to='hero_videos/posters/', blank=True, null=True)
     order = models.PositiveIntegerField(default=0)
     is_active = models.BooleanField(default=True)
 
