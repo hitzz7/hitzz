@@ -16,7 +16,6 @@
 
 <div class="image">
     <video class="soft" id="mainVideo" autoplay muted playsinline
-           poster="{% if hero_videos and hero_videos.0.poster %}{{ hero_videos.0.poster.url }}{% else %}{% static 'heropost.webp' %}{% endif %}"
            {% if hero_videos|length <= 1 %}loop{% endif %}>
         {% if hero_videos %}
         <source id="videoSource" src="{{ hero_videos.0.video.url }}" type="video/mp4">
