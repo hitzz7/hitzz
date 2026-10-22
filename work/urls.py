@@ -3,10 +3,10 @@ from . import views
 from .views import demo_view
 from django.contrib.sitemaps.views import sitemap
 
-from .sitemaps import ProjectSitemap, StaticViewSitemap
+from .sitemaps import StaticViewSitemap
 
 sitemaps = {
-    'projects': ProjectSitemap(),
+    
     'static': StaticViewSitemap(),
 }
 app_name = 'work'
